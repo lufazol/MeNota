@@ -14,7 +14,7 @@ import SwiftUI
 struct MeNotaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FolderView()
         }
     }
 }
