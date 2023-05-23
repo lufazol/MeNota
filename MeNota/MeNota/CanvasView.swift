@@ -2,19 +2,25 @@
 //  CanvasView.swift
 //  MeNota
 //
-//  Created by Carol Quiterio on 23/05/23.
+//  Created by Larissa Okabayashi on 23/05/23.
 //
 
-import Foundation
 import SwiftUI
 
 struct CanvasView: View {
+    @State private var bgColor = Color.red
+
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("Oie")
-            }
-            .navigationBarTitle("Canvas")
+        VStack {
+            ColorPicker("Set the background color", selection: $bgColor)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(bgColor)
+    }
+}
+
+struct CanvasView_Previews: PreviewProvider {
+    static var previews: some View {
+        CanvasView()
     }
 }
