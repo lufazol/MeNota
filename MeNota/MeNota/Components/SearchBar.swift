@@ -7,6 +7,8 @@
 
 // For this to work, put the VStack inside of a NavigationView
 
+// The keyboard should appear when you click on the text field in the simulator. If the keyboard doesn't appear, press Command + K
+
 import SwiftUI
 
 struct SearchBar: View {

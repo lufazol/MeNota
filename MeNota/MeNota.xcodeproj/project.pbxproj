@@ -14,6 +14,7 @@
 		57B4308E2A1BAFC300E2D0D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57B4308D2A1BAFC300E2D0D6 /* Assets.xcassets */; };
 		57B430912A1BAFC300E2D0D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57B430902A1BAFC300E2D0D6 /* Preview Assets.xcassets */; };
 		62CF93682A1E48E1008AFD42 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CF93672A1E48E1008AFD42 /* SearchBar.swift */; };
+		62CF936A2A1E569A008AFD42 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CF93692A1E569A008AFD42 /* NotesView.swift */; };
 		A7CFB5B72A1CFF1300B5CC8A /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFB5B62A1CFF1300B5CC8A /* CanvasView.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		57B4308D2A1BAFC300E2D0D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57B430902A1BAFC300E2D0D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		62CF93672A1E48E1008AFD42 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		62CF93692A1E569A008AFD42 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		A7CFB5B62A1CFF1300B5CC8A /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -46,6 +48,7 @@
 				A7CFB5B62A1CFF1300B5CC8A /* CanvasView.swift */,
 				571129392A1E2F34007A2F78 /* BlankNoteView.swift */,
 				57B4308B2A1BAFC200E2D0D6 /* FolderView.swift */,
+				62CF93692A1E569A008AFD42 /* NotesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62CF936A2A1E569A008AFD42 /* NotesView.swift in Sources */,
 				57B4308C2A1BAFC200E2D0D6 /* FolderView.swift in Sources */,
 				57B4308A2A1BAFC200E2D0D6 /* MeNotaApp.swift in Sources */,
 				A7CFB5B72A1CFF1300B5CC8A /* CanvasView.swift in Sources */,
