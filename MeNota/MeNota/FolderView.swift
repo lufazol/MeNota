@@ -23,3 +23,9 @@ struct FolderView: View {
         .accentColor(.yellow)
     }
 }
+
+struct FolderView_Previews: PreviewProvider {
+    static var previews: some View {
+        FolderView()
+    }
+}
