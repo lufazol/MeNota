@@ -37,6 +37,7 @@ struct NotesView: View {
                                     .foregroundColor(.secondary)
                             }
                         }
+                        .padding(.horizontal)
                     }
                 }
             }
@@ -53,10 +54,11 @@ struct SectionHeaderView: View {
     
     var body: some View {
         Text(text)
-            .font(.system(size: 18, weight: .bold))
+            .font(.title3.bold())
             .foregroundColor(.black)
-            .textCase(capitalization) // Set the capitalization style
-            .padding(.top, 10)
+            .textCase(capitalization)
+            .alignmentGuide(.leading) { _ in 0 }
+            .padding(.vertical, 5)
     }
 }
 
