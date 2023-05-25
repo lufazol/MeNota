@@ -62,10 +62,8 @@
 		5711293E2A1E3049007A2F78 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				5711293C2A1E303A007A2F78 /* BlankNoteBottomToolBar.swift */,
-				570ADF182A1E4D0F00BA1B8D /* BlankNoteTopToolBar.swift */,
+				57B87C0B2A1F81DC000153FF /* Toolbars */,
 				62CF936B2A1E595B008AFD42 /* SearchBar.swift */,
-				57B87C092A1F7A28000153FF /* SearchTopToolBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -105,6 +103,16 @@
 				57B430902A1BAFC300E2D0D6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		57B87C0B2A1F81DC000153FF /* Toolbars */ = {
+			isa = PBXGroup;
+			children = (
+				5711293C2A1E303A007A2F78 /* BlankNoteBottomToolBar.swift */,
+				570ADF182A1E4D0F00BA1B8D /* BlankNoteTopToolBar.swift */,
+				57B87C092A1F7A28000153FF /* SearchTopToolBar.swift */,
+			);
+			path = Toolbars;
 			sourceTree = "<group>";
 		};
 		A74D3ABF2A1F7CBE0044DEC2 /* Data */ = {
