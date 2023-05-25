@@ -8,8 +8,25 @@
 import SwiftUI
 
 struct BlankNoteView: View {
+    @State private var text: String = ""
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                TextField("Type note", text: $text)
+                Spacer()
+            }
+            .toolbar{
+                ToolbarItemGroup(placement: .bottomBar) {
+                    BlankNoteBottomToolBar()
+                }
+
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    BlankNoteTopToolBar()
+                }
+            }
+        }
+
     }
 }
 

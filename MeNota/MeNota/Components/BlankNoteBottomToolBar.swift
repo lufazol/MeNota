@@ -1,5 +1,5 @@
 //
-//  ToolBar.swift
+//  BlankNoteBottomToolBar.swift
 //  MeNota
 //
 //  Created by Luan Fazolin on 24/05/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ToolBar: View {
+struct BlankNoteBottomToolBar: View {
     var body: some View {
         HStack {
             Button(action: {
@@ -62,8 +62,8 @@ struct ToolBar: View {
     }
 }
 
-struct ToolBar_Previews: PreviewProvider {
+struct BlankNoteBottomToolBar_Previews: PreviewProvider {
     static var previews: some View {
-        ToolBar()
+        BlankNoteBottomToolBar()
     }
 }
