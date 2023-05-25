@@ -16,6 +16,7 @@
 		57B430912A1BAFC300E2D0D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57B430902A1BAFC300E2D0D6 /* Preview Assets.xcassets */; };
 		62CF936A2A1E569A008AFD42 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CF93692A1E569A008AFD42 /* NotesView.swift */; };
 		62CF936C2A1E595B008AFD42 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CF936B2A1E595B008AFD42 /* SearchBar.swift */; };
+		A74D3AC12A1F7CD20044DEC2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D3AC02A1F7CD20044DEC2 /* Note.swift */; };
 		A7CFB5B72A1CFF1300B5CC8A /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFB5B62A1CFF1300B5CC8A /* CanvasView.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		57B430902A1BAFC300E2D0D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		62CF93692A1E569A008AFD42 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		62CF936B2A1E595B008AFD42 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchBar.swift; path = ../Views/SearchBar.swift; sourceTree = "<group>"; };
+		A74D3AC02A1F7CD20044DEC2 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		A7CFB5B62A1CFF1300B5CC8A /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 			children = (
 				57B430892A1BAFC200E2D0D6 /* MeNotaApp.swift */,
 				5711293E2A1E3049007A2F78 /* Components */,
+				A74D3ABF2A1F7CBE0044DEC2 /* Data */,
 				5711293B2A1E2FC1007A2F78 /* Views */,
 				57B4308D2A1BAFC300E2D0D6 /* Assets.xcassets */,
 				57B4308F2A1BAFC300E2D0D6 /* Preview Content */,
@@ -99,6 +102,14 @@
 				57B430902A1BAFC300E2D0D6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A74D3ABF2A1F7CBE0044DEC2 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A74D3AC02A1F7CD20044DEC2 /* Note.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +187,7 @@
 				57B4308A2A1BAFC200E2D0D6 /* MeNotaApp.swift in Sources */,
 				A7CFB5B72A1CFF1300B5CC8A /* CanvasView.swift in Sources */,
 				5711293A2A1E2F34007A2F78 /* BlankNoteView.swift in Sources */,
+				A74D3AC12A1F7CD20044DEC2 /* Note.swift in Sources */,
 				62CF936C2A1E595B008AFD42 /* SearchBar.swift in Sources */,
 				5711293D2A1E303A007A2F78 /* BlankNoteBottomToolBar.swift in Sources */,
 				570ADF192A1E4D0F00BA1B8D /* BlankNoteTopToolBar.swift in Sources */,
