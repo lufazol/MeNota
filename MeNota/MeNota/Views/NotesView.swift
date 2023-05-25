@@ -7,19 +7,56 @@
 
 import SwiftUI
 
+struct writtenNotes: Identifiable, Hashable {
+    let title: String
+    let subtitle: String
+    let id = NSUUID().uuidString
+}
+
 struct NotesView: View {
+    let notesPreview: [writtenNotes] = [
+        .init(title: "Title 1", subtitle: "Subtitle 1"),
+        .init(title: "Title 2", subtitle: "Subtitle 2"),
+        .init(title: "Title 3", subtitle: "Subtitle 3"),
+        .init(title: "Title 4", subtitle: "Subtitle 4")
+    ]
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
-                Text("aaaaaaaaaaaaaaaaa")
+                SearchBar()
+                
+                List {
+                    Section(header: SectionHeaderView(text: "Yesterday", capitalization: .none)) {
+                        ForEach(notesPreview) { preview in
+                            VStack(alignment: .leading) {
+                                Text(preview.title)
+                                    .font(.headline)
+                                Text(preview.subtitle)
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
+                }
             }
+            .padding()
+            Spacer()
             .navigationBarTitle("Notes")
-            .navigationBarItems(trailing:
-            NavigationLink(destination: CanvasView()) {
-                 Image(systemName: "ellipsis.circle")
-            })
         }
-        .accentColor(.yellow)
+    }
+}
+
+struct SectionHeaderView: View {
+    let text: String
+    let capitalization: Text.Case?
+    
+    var body: some View {
+        Text(text)
+            .font(.system(size: 18, weight: .bold))
+            .foregroundColor(.black)
+            .textCase(capitalization) // Set the capitalization style
+            .padding(.top, 10)
     }
 }
 
