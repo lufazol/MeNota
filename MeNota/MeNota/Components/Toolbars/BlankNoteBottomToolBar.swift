@@ -34,16 +34,16 @@ struct BlankNoteBottomToolBar: View {
 
             
             Spacer()
-
-            Button(action: {
-                // Perform action for the first toolbar button
-            }) {
-                Image(systemName: "pencil.tip.crop.circle")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 25, height: 25)
-            }
-            .padding()
+            
+            NavigationLink(
+                destination: CanvasView())
+                {
+                    Image(systemName: "pencil.tip.crop.circle")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 25, height: 25)
+                }
+                .padding()
 
             
             Spacer()
