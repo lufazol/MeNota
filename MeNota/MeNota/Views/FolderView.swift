@@ -46,3 +46,8 @@ struct FolderView: View {
     }
 }
 
+struct FolderView_Previews: PreviewProvider {
+    static var previews: some View {
+        FolderView()
+    }
+}
