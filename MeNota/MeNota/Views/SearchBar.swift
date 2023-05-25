@@ -15,35 +15,32 @@ struct SearchBar: View {
   @State var textFieldText = ""
   @State var dataArray: [String] = []
     
-  var body: some View {
-    VStack {
-      HStack {
-        Image(systemName: "magnifyingglass")
-        TextField("Search", text: $textFieldText)
-          .submitLabel(.search)
-          .onSubmit {
-            saveText()
+      var body: some View {
+          HStack {
+            Image(systemName: "magnifyingglass")
+            TextField("Search", text: $textFieldText)
+              .submitLabel(.search)
+              .onSubmit {
+                saveText()
+            }
+          }
+          .foregroundColor(.gray)
+          .padding(.vertical, 6)
+          .padding(.horizontal, 6)
+          .background(Color.gray.opacity(0.15).cornerRadius(10))
+            
+          ForEach(dataArray, id: \.self) { data in
+            Text(data)
+          }
+            
+          // Spacer()
         }
-      }
-      .foregroundColor(.gray)
-      .padding(.vertical, 6)
-      .padding(.horizontal, 6)
-      .background(Color.gray.opacity(0.15).cornerRadius(10))
         
-      ForEach(dataArray, id: \.self) { data in
-        Text(data)
+      func saveText() {
+        dataArray.append(textFieldText)
+        textFieldText = ""
       }
-        
-      // Spacer()
     }
-    .padding()
-  }
-    
-  func saveText() {
-    dataArray.append(textFieldText)
-    textFieldText = ""
-  }
-}
 
 struct SearchBar_Previews: PreviewProvider {
   static var previews: some View {
