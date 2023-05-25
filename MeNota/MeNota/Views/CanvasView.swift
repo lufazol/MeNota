@@ -55,7 +55,7 @@ struct CanvasView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct CanvasView_Previews: PreviewProvider {
     static var previews: some View {
         CanvasView()
     }
