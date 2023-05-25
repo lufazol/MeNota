@@ -22,7 +22,7 @@ struct NotesView: View {
     ]
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
                 SearchBar()
                 
@@ -40,11 +40,14 @@ struct NotesView: View {
                         .padding(.horizontal)
                     }
                 }
+                .listStyle(GroupedListStyle())
+                .cornerRadius(10)
             }
             .padding()
-            Spacer()
+            .background(Color(UIColor.systemGray6))
             .navigationBarTitle("Notes")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
