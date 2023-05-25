@@ -40,8 +40,7 @@ struct NotesView: View {
                         .padding(.horizontal)
                     }
                 }
-                .listStyle(GroupedListStyle())
-                .cornerRadius(10)
+                .padding(.horizontal, -16)
             }
             .padding()
             .background(Color(UIColor.systemGray6))
