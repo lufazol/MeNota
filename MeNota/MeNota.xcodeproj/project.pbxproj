@@ -15,6 +15,7 @@
 		57B4308E2A1BAFC300E2D0D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57B4308D2A1BAFC300E2D0D6 /* Assets.xcassets */; };
 		57B430912A1BAFC300E2D0D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57B430902A1BAFC300E2D0D6 /* Preview Assets.xcassets */; };
 		57B87C0A2A1F7A28000153FF /* SearchTopToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B87C092A1F7A28000153FF /* SearchTopToolBar.swift */; };
+		57B87C0D2A1F8B8F000153FF /* CanvasToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B87C0C2A1F8B8F000153FF /* CanvasToolBar.swift */; };
 		62CF936A2A1E569A008AFD42 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CF93692A1E569A008AFD42 /* NotesView.swift */; };
 		62CF936C2A1E595B008AFD42 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CF936B2A1E595B008AFD42 /* SearchBar.swift */; };
 		A74D3AC12A1F7CD20044DEC2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D3AC02A1F7CD20044DEC2 /* Note.swift */; };
@@ -31,6 +32,7 @@
 		57B4308D2A1BAFC300E2D0D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57B430902A1BAFC300E2D0D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		57B87C092A1F7A28000153FF /* SearchTopToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTopToolBar.swift; sourceTree = "<group>"; };
+		57B87C0C2A1F8B8F000153FF /* CanvasToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasToolBar.swift; sourceTree = "<group>"; };
 		62CF93692A1E569A008AFD42 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		62CF936B2A1E595B008AFD42 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchBar.swift; path = ../Views/SearchBar.swift; sourceTree = "<group>"; };
 		A74D3AC02A1F7CD20044DEC2 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				5711293C2A1E303A007A2F78 /* BlankNoteBottomToolBar.swift */,
 				570ADF182A1E4D0F00BA1B8D /* BlankNoteTopToolBar.swift */,
 				57B87C092A1F7A28000153FF /* SearchTopToolBar.swift */,
+				57B87C0C2A1F8B8F000153FF /* CanvasToolBar.swift */,
 			);
 			path = Toolbars;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 			files = (
 				62CF936A2A1E569A008AFD42 /* NotesView.swift in Sources */,
 				57B4308C2A1BAFC200E2D0D6 /* FolderView.swift in Sources */,
+				57B87C0D2A1F8B8F000153FF /* CanvasToolBar.swift in Sources */,
 				57B4308A2A1BAFC200E2D0D6 /* MeNotaApp.swift in Sources */,
 				A7CFB5B72A1CFF1300B5CC8A /* CanvasView.swift in Sources */,
 				5711293A2A1E2F34007A2F78 /* BlankNoteView.swift in Sources */,
