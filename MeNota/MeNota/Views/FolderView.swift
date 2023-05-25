@@ -15,21 +15,23 @@ struct FolderView: View {
                     Text("iCloud").bold().font(.system(size: 22))
                     Spacer()
                 }.padding(.horizontal, 16)
-                List(noteList) { note in
-                          HStack {
-                            Text(note.title)
-                          }
+                HStack {
+                    List(folderList) { folder in
+                        HStack {
+                            Text(folder.title)
                         }
+                    }
+                }
                 Spacer()
             }.toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
-                    Button(action: {}) {
+                    NavigationLink(destination: BlankNoteView()) {
                         Image(systemName: "folder.badge.plus")
                     }
                     
                     Spacer()
-                    
-                    Button(action: {}) {
+                
+                    NavigationLink(destination: BlankNoteView()) {
                         Image(systemName: "square.and.pencil")
                     }
                 }

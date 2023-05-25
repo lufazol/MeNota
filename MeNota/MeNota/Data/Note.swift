@@ -41,3 +41,18 @@ let noteList = [
   ),
  ]
 
+struct Folder : Identifiable {
+ let id : Int
+ let title : String
+}
+
+let folderList = [
+   Folder(
+    id: 1,
+    title: "Notes"
+  ),
+    Folder(
+    id: 2,
+    title: "Recently Deleted"
+  )
+ ]
