@@ -12,11 +12,21 @@ struct SearchView: View {
         VStack {
             SearchTopToolBar()
             
-            HStack(alignment: .top) {
-                Image(systemName: "person.crop.circle")
-                Text("Shared Notes")
+            List {
+                HStack(alignment: .top) {
+                    Image(systemName: "person.crop.circle")
+                    Text("Shared Notes")
+                }
+                HStack(alignment: .top) {
+                    Image(systemName: "person.crop.circle")
+                    Text("Shared Notes")
+                }
+                HStack(alignment: .top) {
+                    Image(systemName: "person.crop.circle")
+                    Text("Shared Notes")
+                }
+                .alignmentGuide(.leading) { _ in 0 }
             }
-            .alignmentGuide(.leading) { _ in 0 }
             
             Spacer()
         }
