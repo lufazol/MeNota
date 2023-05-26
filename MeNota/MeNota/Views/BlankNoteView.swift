@@ -13,17 +13,18 @@ struct BlankNoteView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Type note", text: $text)
+                TextField("Type note", text: $text).padding(.horizontal)
                 Spacer()
             }
-            .toolbar{
-                ToolbarItemGroup(placement: .bottomBar) {
-                    BlankNoteBottomToolBar()
-                }
+            Spacer()
+            
+        }.toolbar{
+            ToolbarItemGroup(placement: .bottomBar) {
+                BlankNoteBottomToolBar()
+            }
 
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    BlankNoteTopToolBar()
-                }
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                BlankNoteTopToolBar()
             }
         }
 
