@@ -15,6 +15,7 @@ struct SearchTopToolBar: View {
         HStack {
             SearchBar()
                 .padding(.leading)
+                .padding(.trailing, -10)
             
             Button(action: {
             }) {
