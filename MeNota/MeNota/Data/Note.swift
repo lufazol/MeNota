@@ -41,6 +41,8 @@ let noteList = [
   ),
  ]
 
+// this is used in NotesView as the description
+// it's a "gambiarra" created only so that the dot doesn't appear on the description preview
 let dotlessNoteList = [
   Note(
     id: 1,
