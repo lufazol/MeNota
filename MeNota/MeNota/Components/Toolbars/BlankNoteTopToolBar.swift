@@ -18,9 +18,8 @@ struct BlankNoteTopToolBar: View {
                 Image(systemName: "square.and.arrow.up")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 25, height: 25)
+                    .frame(width: 20, height: 20)
             }
-            .padding()
 
             Button(action: {
                 // Perform action for the second toolbar button
@@ -28,7 +27,7 @@ struct BlankNoteTopToolBar: View {
                 Image(systemName: "ellipsis.circle")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 25, height: 25)
+                    .frame(width: 20, height: 20)
             }
             .padding()
         }
