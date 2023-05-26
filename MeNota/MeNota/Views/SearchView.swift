@@ -25,8 +25,9 @@ struct SearchView: View {
             List {
                 Section(header: SectionHeaderView(text: "Suggested", capitalization: .none)) {
                     ForEach(items, id: \.text) { item in
-                        HStack(alignment: .top) {
+                        HStack(alignment: .top, spacing: 20) {
                             Image(systemName: item.systemName)
+                                .foregroundColor(.accentColor)
                             Text(item.text)
                         }
                     }
