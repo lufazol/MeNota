@@ -16,6 +16,7 @@ struct BlankNoteBottomToolBar: View {
     
     var body: some View {
         HStack {
+            
             Button(action: {
                 // Perform action for the first toolbar button
             }) {
@@ -28,44 +29,42 @@ struct BlankNoteBottomToolBar: View {
             
             Spacer()
             
-            Button {
-                print("Edit button was tapped")
-            } label: {
+            Menu {
+                Button {
+                    self.sourceType = .photoLibrary
+                    self.isShowPhotoLibrary = true
+                } label: {
+                    Label("Choose Photo or Video", systemImage: "photo.on.rectangle")
+                }
+                
+                Button {
+                    self.isShowCamera = true
+                } label: {
+                    Label("Scan Documents", systemImage:"doc.viewfinder")
+                }
+                
+                Button {
+                    self.sourceType = .camera
+                    self.isShowCamera = true
+                } label: {
+                    Label("Take Photo or Video", systemImage:"camera")
+                }.padding()
+                
+                Button {
+                    self.isShowCamera = true
+                } label: {
+                    Label("Scan Text", systemImage:"text.viewfinder")
+                }
+            }label: {
                 Image(systemName: "camera")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 25, height: 25)
-                    .contextMenu {
-                        Button {
-                            self.sourceType = .photoLibrary
-                            self.isShowPhotoLibrary = true
-                        } label: {
-                            Label("Choose Photo or Video", systemImage: "photo.on.rectangle")
-                        }
-                        
-                        Button {
-                            print("Scan Documents")
-                        } label: {
-                            Label("Scan Documents", systemImage:"doc.viewfinder")
-                        }
-                        
-                        Button {
-                            self.sourceType = .camera
-                            self.isShowCamera = true
-                        } label: {
-                            Label("Take Photo or Video", systemImage:"camera")
-                        }.padding()
-                        
-                        Button {
-                            print("Scan Text")
-                        } label: {
-                            Label("Scan Text", systemImage:"text.viewfinder")
-                        }
-                    }.sheet(isPresented: self.$isShowPhotoLibrary) {
-                        ImagePickerView(selectedImage: self.$selectedImage, sourceType: .photoLibrary)}
-                    .sheet(isPresented: self.$isShowCamera) {
-                        ImagePickerView(selectedImage: self.$selectedImage, sourceType: .camera)}
-            }
+
+            }.sheet(isPresented: self.$isShowPhotoLibrary) {
+                ImagePickerView(selectedImage: self.$selectedImage, sourceType: .photoLibrary)}
+            .sheet(isPresented: self.$isShowCamera) {
+                ImagePickerView(selectedImage: self.$selectedImage, sourceType: .camera)}
             
             Spacer()
             
