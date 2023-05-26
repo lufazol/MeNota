@@ -14,13 +14,6 @@ struct writtenNotes: Identifiable, Hashable {
 }
 
 struct NotesView: View {
-    let notesPreview: [writtenNotes] = [
-        .init(title: "Title 1", subtitle: "Subtitle 1"),
-        .init(title: "Title 2", subtitle: "Subtitle 2"),
-        .init(title: "Title 3", subtitle: "Subtitle 3"),
-        .init(title: "Title 4", subtitle: "Subtitle 4")
-    ]
-    
     var body: some View {
         NavigationView {
             VStack {
@@ -29,11 +22,11 @@ struct NotesView: View {
                 
                 List {
                     Section(header: SectionHeaderView(text: "Yesterday", capitalization: .none)) {
-                        ForEach(notesPreview) { preview in
+                        ForEach(noteList) { preview in
                             VStack(alignment: .leading) {
                                 Text(preview.title)
                                     .font(.headline)
-                                Text(preview.subtitle)
+                                Text(preview.description.split(separator: "\n").first ?? "")
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                             }
@@ -44,7 +37,10 @@ struct NotesView: View {
                 .padding(.horizontal, -16)
             }
             .padding()
+            
+            // to make it work on light mode:
             // .background(Color(UIColor.systemGray6))
+            
             .navigationBarTitle("Notes")
         }
         .navigationViewStyle(StackNavigationViewStyle())
