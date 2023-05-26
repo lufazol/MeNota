@@ -45,36 +45,3 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
     }
     
 }
-
-struct ImageView: View {
-    
-    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
-    @State private var selectedImage: UIImage?
-    @State private var isImagePickerDisplay = false
-    
-    var body: some View {
-        NavigationView {
-            HStack {
-                
-                Button("Camera") {
-                    self.sourceType = .camera
-                    self.isImagePickerDisplay.toggle()
-                }.padding()
-                
-                Button("photo") {
-                    self.sourceType = .photoLibrary
-                    self.isImagePickerDisplay.toggle()
-                }.padding()
-            }
-            .sheet(isPresented: self.$isImagePickerDisplay) {
-                ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
-            }
-        }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ImageView()
-    }
-}
