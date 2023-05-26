@@ -22,7 +22,7 @@ struct NotesView: View {
                 
                 List {
                     Section(header: SectionHeaderView(text: "Yesterday", capitalization: .none)) {
-                        ForEach(noteList) { preview in
+                        ForEach(dotlessNoteList) { preview in
                             VStack(alignment: .leading) {
                                 Text(preview.title)
                                     .font(.headline)
@@ -32,7 +32,7 @@ struct NotesView: View {
                                     let descriptionText = firstLine.trimmingCharacters(in: .whitespacesAndNewlines)
                                     let numberRange = descriptionText.rangeOfCharacter(from: .decimalDigits)
                                     let cleanText = numberRange.map { String(descriptionText[$0.upperBound...]) } ?? descriptionText
-                                                                        
+
                                     Text(cleanText)
                                         .font(.subheadline)
                                         .foregroundColor(.secondary)
