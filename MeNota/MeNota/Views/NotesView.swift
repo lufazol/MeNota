@@ -25,6 +25,7 @@ struct NotesView: View {
         NavigationView {
             VStack {
                 SearchBar()
+                    .padding(.top, -15)
                 
                 List {
                     Section(header: SectionHeaderView(text: "Yesterday", capitalization: .none)) {
