@@ -44,15 +44,21 @@ let noteList = [
 struct Folder : Identifiable {
  let id : Int
  let title : String
+ let icon : String
+ let quantity: Int
 }
 
 let folderList = [
    Folder(
     id: 1,
-    title: "Notes"
+    title: "Notes",
+    icon: "folder",
+    quantity: 4
   ),
     Folder(
     id: 2,
-    title: "Recently Deleted"
+    title: "Recently Deleted",
+    icon: "trash",
+    quantity: 1
   )
  ]

@@ -46,7 +46,7 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
     
 }
 
-struct ContentView: View {
+struct ImageView: View {
     
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
@@ -54,15 +54,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                
-                if selectedImage != nil {
-                    Image(uiImage: selectedImage!)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .clipShape(Circle())
-                        .frame(width: 300, height: 300)
-                }
+            HStack {
                 
                 Button("Camera") {
                     self.sourceType = .camera
@@ -83,6 +75,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ImageView()
     }
 }
