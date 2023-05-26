@@ -14,27 +14,29 @@ struct writtenNotes: Identifiable, Hashable {
 }
 
 struct NotesView: View {
-    let notesPreview: [writtenNotes] = [
-        .init(title: "Title 1", subtitle: "Subtitle 1"),
-        .init(title: "Title 2", subtitle: "Subtitle 2"),
-        .init(title: "Title 3", subtitle: "Subtitle 3"),
-        .init(title: "Title 4", subtitle: "Subtitle 4")
-    ]
-    
     var body: some View {
         NavigationView {
             VStack {
                 SearchBar()
+                    .padding(.top, -15)
                 
                 List {
                     Section(header: SectionHeaderView(text: "Yesterday", capitalization: .none)) {
-                        ForEach(notesPreview) { preview in
+                        ForEach(dotlessNoteList) { preview in
                             VStack(alignment: .leading) {
                                 Text(preview.title)
                                     .font(.headline)
-                                Text(preview.subtitle)
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
+                                
+                                // doesn't show number if the first character is a digit
+                                if let firstLine = preview.description.split(separator: "\n").first {
+                                    let descriptionText = firstLine.trimmingCharacters(in: .whitespacesAndNewlines)
+                                    let numberRange = descriptionText.rangeOfCharacter(from: .decimalDigits)
+                                    let cleanText = numberRange.map { String(descriptionText[$0.upperBound...]) } ?? descriptionText
+
+                                    Text(cleanText)
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                }
                             }
                         }
                         .padding(.horizontal)
@@ -43,7 +45,10 @@ struct NotesView: View {
                 .padding(.horizontal, -16)
             }
             .padding()
+            
+            // to make it work on light mode:
             // .background(Color(UIColor.systemGray6))
+            
             .navigationBarTitle("Notes")
         }
         .navigationViewStyle(StackNavigationViewStyle())

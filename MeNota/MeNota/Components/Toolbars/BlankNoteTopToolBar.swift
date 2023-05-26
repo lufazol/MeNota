@@ -21,13 +21,45 @@ struct BlankNoteTopToolBar: View {
                     .frame(width: 20, height: 20)
             }
 
-            Button(action: {
-                // Perform action for the second toolbar button
-            }) {
+            Menu {
+                HStack {
+                    Button {
+                        print("Test")
+                    } label: {
+                            Image(systemName: "magnifyingglass")
+                            Text("Find in Note")
+                    }
+                    Button {
+                        print("Test")
+                    } label: {
+                            Image(systemName: "folder")
+                            Text("Move Note")
+                    }
+                    Button {
+                        print("Test")
+                    } label: {
+                            Image(systemName: "squareshape.split.3x3")
+                            Text("Lines & Grids")
+                    }
+                    Button {
+                        print("Test")
+                    } label: {
+                            Image(systemName: "circle.righthalf.filled")
+                            Text("Use Light Background")
+                    }
+                    Button(role: .destructive) {
+                        print("Test")
+                    } label: {
+                            Image(systemName: "trash")
+                            Text("Delete")
+                    }
+                }
+            } label: {
                 Image(systemName: "ellipsis.circle")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 20, height: 20)
+
             }
             .padding()
         }
