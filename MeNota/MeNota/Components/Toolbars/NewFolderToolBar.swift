@@ -23,7 +23,7 @@ struct NewFolderToolbar: View {
             Spacer()
             
             NavigationLink(destination: BlankNoteView()) {
-                Text("   OK").fontWeight(.semibold)
+                Text("   OK").fontWeight(.bold)
                     .foregroundColor(.yellow)
             }
         }
