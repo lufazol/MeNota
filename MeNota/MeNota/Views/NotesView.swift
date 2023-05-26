@@ -33,9 +33,13 @@ struct NotesView: View {
                                     let numberRange = descriptionText.rangeOfCharacter(from: .decimalDigits)
                                     let cleanText = numberRange.map { String(descriptionText[$0.upperBound...]) } ?? descriptionText
 
-                                    Text(cleanText)
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
+                                    HStack {
+                                        Text(preview.time)
+                                        Text(cleanText)
+                                    }
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                                    .lineLimit(1)
                                 }
                             }
                         }
