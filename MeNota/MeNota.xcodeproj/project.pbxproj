@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		052895B32A1F8EF7006F9ABA /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052895B22A1F8EF7006F9ABA /* ImagePickerView.swift */; };
+		052895B52A1FA5CF006F9ABA /* ImageOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052895B42A1FA5CF006F9ABA /* ImageOptionsView.swift */; };
 		570ADF192A1E4D0F00BA1B8D /* BlankNoteTopToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570ADF182A1E4D0F00BA1B8D /* BlankNoteTopToolBar.swift */; };
 		5711293A2A1E2F34007A2F78 /* BlankNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571129392A1E2F34007A2F78 /* BlankNoteView.swift */; };
 		5711293D2A1E303A007A2F78 /* BlankNoteBottomToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5711293C2A1E303A007A2F78 /* BlankNoteBottomToolBar.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		052895B22A1F8EF7006F9ABA /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		052895B42A1FA5CF006F9ABA /* ImageOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOptionsView.swift; sourceTree = "<group>"; };
 		570ADF182A1E4D0F00BA1B8D /* BlankNoteTopToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankNoteTopToolBar.swift; sourceTree = "<group>"; };
 		571129392A1E2F34007A2F78 /* BlankNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankNoteView.swift; sourceTree = "<group>"; };
 		5711293C2A1E303A007A2F78 /* BlankNoteBottomToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankNoteBottomToolBar.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			children = (
 				A7CFB5B62A1CFF1300B5CC8A /* CanvasView.swift */,
 				571129392A1E2F34007A2F78 /* BlankNoteView.swift */,
+				052895B42A1FA5CF006F9ABA /* ImageOptionsView.swift */,
 				57B4308B2A1BAFC200E2D0D6 /* FolderView.swift */,
 				052895B22A1F8EF7006F9ABA /* ImagePickerView.swift */,
 				62CF93692A1E569A008AFD42 /* NotesView.swift */,
@@ -203,6 +206,7 @@
 				A7CFB5B72A1CFF1300B5CC8A /* CanvasView.swift in Sources */,
 				5711293A2A1E2F34007A2F78 /* BlankNoteView.swift in Sources */,
 				A74D3AC12A1F7CD20044DEC2 /* Note.swift in Sources */,
+				052895B52A1FA5CF006F9ABA /* ImageOptionsView.swift in Sources */,
 				62CF936C2A1E595B008AFD42 /* SearchBar.swift in Sources */,
 				57B87C0A2A1F7A28000153FF /* SearchTopToolBar.swift in Sources */,
 				5711293D2A1E303A007A2F78 /* BlankNoteBottomToolBar.swift in Sources */,
