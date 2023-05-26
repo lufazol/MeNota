@@ -14,7 +14,6 @@ struct BlankNoteView: View {
         NavigationView {
             VStack {
                 TextField("Type note", text: $text).padding()
-                
                 Spacer()
             }.toolbar{
                 ToolbarItemGroup(placement: .bottomBar) {

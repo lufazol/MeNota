@@ -11,7 +11,8 @@ struct BlankNoteBottomToolBar: View {
     
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
-    @State private var isImagePickerDisplay = false
+    @State private var isShowPhotoLibrary = false
+    @State private var isShowCamera = false
     
     var body: some View {
         HStack {
@@ -37,7 +38,7 @@ struct BlankNoteBottomToolBar: View {
                     .contextMenu {
                         Button {
                             self.sourceType = .photoLibrary
-                            self.isImagePickerDisplay.toggle()
+                            self.isShowPhotoLibrary = true
                         } label: {
                             Label("Choose Photo or Video", systemImage: "photo.on.rectangle")
                         }
@@ -50,7 +51,7 @@ struct BlankNoteBottomToolBar: View {
                         
                         Button {
                             self.sourceType = .camera
-                            self.isImagePickerDisplay.toggle()
+                            self.isShowCamera = true
                         } label: {
                             Label("Take Photo or Video", systemImage:"camera")
                         }.padding()
@@ -60,9 +61,10 @@ struct BlankNoteBottomToolBar: View {
                         } label: {
                             Label("Scan Text", systemImage:"text.viewfinder")
                         }
-                    }.sheet(isPresented: self.$isImagePickerDisplay) {
-                        ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
-                    }
+                    }.sheet(isPresented: self.$isShowPhotoLibrary) {
+                        ImagePickerView(selectedImage: self.$selectedImage, sourceType: .photoLibrary)}
+                    .sheet(isPresented: self.$isShowCamera) {
+                        ImagePickerView(selectedImage: self.$selectedImage, sourceType: .camera)}
             }
             
             Spacer()
