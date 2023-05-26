@@ -23,14 +23,19 @@ struct SearchView: View {
             SearchTopToolBar()
             
             List {
-                ForEach(items, id: \.text) { item in
-                    HStack(alignment: .top) {
-                        Image(systemName: item.systemName)
-                        Text(item.text)
+                Section(header: SectionHeaderView(text: "Suggested", capitalization: .none)) {
+                    ForEach(items, id: \.text) { item in
+                        HStack(alignment: .top) {
+                            Image(systemName: item.systemName)
+                            Text(item.text)
+                        }
                     }
+                    .alignmentGuide(.leading) { _ in 0 }
                 }
-                .alignmentGuide(.leading) { _ in 0 }
             }
+            .listStyle(.plain)
+            .padding(.vertical, -20)
+            .padding(.horizontal, -5)
             
             Spacer()
         }
