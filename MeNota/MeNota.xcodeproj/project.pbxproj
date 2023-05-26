@@ -17,7 +17,10 @@
 		57B87C0A2A1F7A28000153FF /* SearchTopToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B87C092A1F7A28000153FF /* SearchTopToolBar.swift */; };
 		62CF936A2A1E569A008AFD42 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CF93692A1E569A008AFD42 /* NotesView.swift */; };
 		62CF936C2A1E595B008AFD42 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CF936B2A1E595B008AFD42 /* SearchBar.swift */; };
+		A72CD96F2A1FAC4B00743C87 /* NewFolderToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD96E2A1FAC4B00743C87 /* NewFolderToolBar.swift */; };
 		A74D3AC12A1F7CD20044DEC2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D3AC02A1F7CD20044DEC2 /* Note.swift */; };
+		A74D3AC32A1F85470044DEC2 /* FolderToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D3AC22A1F85460044DEC2 /* FolderToolbar.swift */; };
+		A74D3AC52A1FA60A0044DEC2 /* NewFolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74D3AC42A1FA60A0044DEC2 /* NewFolderView.swift */; };
 		A7CFB5B72A1CFF1300B5CC8A /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CFB5B62A1CFF1300B5CC8A /* CanvasView.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +36,10 @@
 		57B87C092A1F7A28000153FF /* SearchTopToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTopToolBar.swift; sourceTree = "<group>"; };
 		62CF93692A1E569A008AFD42 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		62CF936B2A1E595B008AFD42 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchBar.swift; path = ../Views/SearchBar.swift; sourceTree = "<group>"; };
+		A72CD96E2A1FAC4B00743C87 /* NewFolderToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderToolBar.swift; sourceTree = "<group>"; };
 		A74D3AC02A1F7CD20044DEC2 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		A74D3AC22A1F85460044DEC2 /* FolderToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderToolbar.swift; sourceTree = "<group>"; };
+		A74D3AC42A1FA60A0044DEC2 /* NewFolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFolderView.swift; sourceTree = "<group>"; };
 		A7CFB5B62A1CFF1300B5CC8A /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,6 +61,7 @@
 				571129392A1E2F34007A2F78 /* BlankNoteView.swift */,
 				57B4308B2A1BAFC200E2D0D6 /* FolderView.swift */,
 				62CF93692A1E569A008AFD42 /* NotesView.swift */,
+				A74D3AC42A1FA60A0044DEC2 /* NewFolderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -111,6 +118,8 @@
 				5711293C2A1E303A007A2F78 /* BlankNoteBottomToolBar.swift */,
 				570ADF182A1E4D0F00BA1B8D /* BlankNoteTopToolBar.swift */,
 				57B87C092A1F7A28000153FF /* SearchTopToolBar.swift */,
+				A74D3AC22A1F85460044DEC2 /* FolderToolbar.swift */,
+				A72CD96E2A1FAC4B00743C87 /* NewFolderToolBar.swift */,
 			);
 			path = Toolbars;
 			sourceTree = "<group>";
@@ -200,8 +209,11 @@
 				5711293A2A1E2F34007A2F78 /* BlankNoteView.swift in Sources */,
 				A74D3AC12A1F7CD20044DEC2 /* Note.swift in Sources */,
 				62CF936C2A1E595B008AFD42 /* SearchBar.swift in Sources */,
+				A72CD96F2A1FAC4B00743C87 /* NewFolderToolBar.swift in Sources */,
+				A74D3AC52A1FA60A0044DEC2 /* NewFolderView.swift in Sources */,
 				57B87C0A2A1F7A28000153FF /* SearchTopToolBar.swift in Sources */,
 				5711293D2A1E303A007A2F78 /* BlankNoteBottomToolBar.swift in Sources */,
+				A74D3AC32A1F85470044DEC2 /* FolderToolbar.swift in Sources */,
 				570ADF192A1E4D0F00BA1B8D /* BlankNoteTopToolBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

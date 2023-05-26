@@ -8,43 +8,47 @@
 import SwiftUI
 
 struct FolderView: View {
+    
+    @State private var showingNewFolderView = false
+
     var body: some View {
         NavigationView {
+            
             VStack {
                 HStack {
-                    Text("iCloud").bold().font(.system(size: 22))
+                    Text("iCloud").bold().font(.system(size: 22)).padding(.top, 24).padding(.horizontal, 32)
                     Spacer()
-                }.padding(.horizontal, 16)
-                HStack {
-                    List(folderList) { folder in
+                }
+                List(folderList) { folder in
+                    NavigationLink(destination: NotesView()) {
                         HStack {
+                            Image(systemName: folder.icon).foregroundColor(.yellow)
                             Text(folder.title)
+                            Spacer()
+                            Text("\(folder.quantity)").foregroundColor(.gray)
                         }
                     }
                 }
                 Spacer()
-            }.toolbar {
-                ToolbarItemGroup(placement: .bottomBar) {
-                    NavigationLink(destination: BlankNoteView()) {
-                        Image(systemName: "folder.badge.plus")
-                    }
-                    
-                    Spacer()
                 
-                    NavigationLink(destination: BlankNoteView()) {
-                        Image(systemName: "square.and.pencil")
+                    .toolbar {
+                        ToolbarItemGroup(placement: .bottomBar) {
+                            FolderToolbar(action: { showingNewFolderView.toggle() })
+                        }
                     }
-                }
+                
+                    .navigationBarTitle("Folders")
+                    .navigationBarItems(
+                        trailing: NavigationLink(destination: CanvasView()) {
+                                    Text("Edit")
+                        })
+                
             }
-            .navigationBarTitle("Folders")
-            .navigationBarItems(trailing:
-             NavigationLink(destination: CanvasView()) {
-                 Text("Edit")
-                }
-            )
-            .padding(16)
-        }
-        .accentColor(.yellow)
+        }.accentColor(.yellow)
+            .sheet(isPresented: $showingNewFolderView) {
+                NewFolderView()
+            }
+        
     }
 }
 
