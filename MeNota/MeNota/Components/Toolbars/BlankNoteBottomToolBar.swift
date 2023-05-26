@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct BlankNoteBottomToolBar: View {
+    
+    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State private var selectedImage: UIImage?
+    @State private var isImagePickerDisplay = false
+    
     var body: some View {
         HStack {
             Button(action: {
@@ -22,28 +27,55 @@ struct BlankNoteBottomToolBar: View {
             
             Spacer()
             
-            Button(action: {
-                // Perform action for the first toolbar button
-            }) {
+            Button {
+                print("Edit button was tapped")
+            } label: {
                 Image(systemName: "camera")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 25, height: 25)
+                    .contextMenu {
+                        Button {
+                            self.sourceType = .photoLibrary
+                            self.isImagePickerDisplay.toggle()
+                        } label: {
+                            Label("Choose Photo or Video", systemImage: "photo.on.rectangle")
+                        }
+                        
+                        Button {
+                            print("Scan Documents")
+                        } label: {
+                            Label("Scan Documents", systemImage:"doc.viewfinder")
+                        }
+                        
+                        Button {
+                            self.sourceType = .camera
+                            self.isImagePickerDisplay.toggle()
+                        } label: {
+                            Label("Take Photo or Video", systemImage:"camera")
+                        }.padding()
+                        
+                        Button {
+                            print("Scan Text")
+                        } label: {
+                            Label("Scan Text", systemImage:"text.viewfinder")
+                        }
+                    }.sheet(isPresented: self.$isImagePickerDisplay) {
+                        ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
+                    }
             }
-            .padding()
-
             
             Spacer()
-
-            Button(action: {
-                // Perform action for the first toolbar button
-            }) {
-                Image(systemName: "pencil.tip.crop.circle")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 25, height: 25)
-            }
-            .padding()
+            
+            NavigationLink(
+                destination: CanvasView())
+                {
+                    Image(systemName: "pencil.tip.crop.circle")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 25, height: 25)
+                }
+                .padding()
 
             
             Spacer()
