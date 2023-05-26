@@ -26,9 +26,17 @@ struct NotesView: View {
                             VStack(alignment: .leading) {
                                 Text(preview.title)
                                     .font(.headline)
-                                Text(preview.description.split(separator: "\n").first ?? "")
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
+                                
+                                // doesn't show number if the first character is a digit
+                                if let firstLine = preview.description.split(separator: "\n").first {
+                                    let descriptionText = firstLine.trimmingCharacters(in: .whitespacesAndNewlines)
+                                    let numberRange = descriptionText.rangeOfCharacter(from: .decimalDigits)
+                                    let cleanText = numberRange.map { String(descriptionText[$0.upperBound...]) } ?? descriptionText
+                                                                        
+                                    Text(cleanText)
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                }
                             }
                         }
                         .padding(.horizontal)
