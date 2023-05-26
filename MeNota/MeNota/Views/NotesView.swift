@@ -43,7 +43,7 @@ struct NotesView: View {
                 .padding(.horizontal, -16)
             }
             .padding()
-            .background(Color(UIColor.systemGray6))
+            // .background(Color(UIColor.systemGray6))
             .navigationBarTitle("Notes")
         }
         .navigationViewStyle(StackNavigationViewStyle())
@@ -57,7 +57,7 @@ struct SectionHeaderView: View {
     var body: some View {
         Text(text)
             .font(.title3.bold())
-            .foregroundColor(.black)
+            .foregroundColor(.white)
             .textCase(capitalization)
             .alignmentGuide(.leading) { _ in 0 }
             .padding(.vertical, 5)
