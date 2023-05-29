@@ -15,45 +15,75 @@ struct writtenNotes: Identifiable, Hashable {
 
 struct NotesView: View {
     var body: some View {
-        NavigationView {
-            VStack {
-                SearchBar()
-                    .padding(.top, -15)
-                
-                List {
-                    Section(header: SectionHeaderView(text: "Yesterday", capitalization: .none)) {
-                        ForEach(dotlessNoteList) { preview in
-                            VStack(alignment: .leading) {
-                                Text(preview.title)
-                                    .font(.headline)
-                                
-                                // doesn't show number if the first character is a digit
-                                if let firstLine = preview.description.split(separator: "\n").first {
-                                    let descriptionText = firstLine.trimmingCharacters(in: .whitespacesAndNewlines)
-                                    let numberRange = descriptionText.rangeOfCharacter(from: .decimalDigits)
-                                    let cleanText = numberRange.map { String(descriptionText[$0.upperBound...]) } ?? descriptionText
+        VStack {
+            SearchBarButton()
+                .padding(.top, -15)
 
-                                    Text(cleanText)
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
+            List {
+                Section(header: SectionHeaderView(text: "Today", capitalization: .none)) {
+                    ForEach(noteList.prefix(2)) { preview in
+                        VStack(alignment: .leading) {
+                            Text(preview.title)
+                                .font(.headline)
+                            
+                            HStack {
+                                Text(preview.time)
+                                
+                                let seccondChar = preview.description.dropFirst().first
+                                
+                                if (seccondChar == ".") {
+                                    Text(preview.description.dropFirst().dropFirst())
+                                } else {
+                                    Text(preview.description)
                                 }
-                            }
+                                
+                            }.font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .lineLimit(1)
                         }
-                        .padding(.horizontal)
                     }
+                    .padding(.horizontal, 10)
                 }
-                .padding(.horizontal, -16)
+                
+                Section(header: SectionHeaderView(text: "Previous 7 Days", capitalization: .none)) {
+                    ForEach(noteList.prefix(4).suffix(2)) { preview in
+                        VStack(alignment: .leading) {
+                            Text(preview.title)
+                                .font(.headline)
+                            
+                            HStack {
+                                Text(preview.time)
+                                
+                                let seccondChar = preview.description.dropFirst().first
+                                
+                                if (seccondChar == ".") {
+                                    Text(preview.description.dropFirst().dropFirst())
+                                } else {
+                                    Text(preview.description)
+                                }
+                                
+                            }.font(.subheadline)
+                            .foregroundColor(.secondary)
+                            .lineLimit(1)
+                            }
+                    }
+                    .padding(.horizontal, 10)
+                }
+                
             }
-            .padding()
-            
-            // to make it work on light mode:
-            // .background(Color(UIColor.systemGray6))
-            
-            .navigationBarTitle("Notes")
+            .padding(.horizontal, -20)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .padding()
+        
+        .navigationBarTitle("Notes")
+        .toolbar{
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                NotesTopToolBar()
+            }
+        }
     }
 }
+
 
 struct SectionHeaderView: View {
     let text: String

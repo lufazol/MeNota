@@ -40,8 +40,10 @@ struct SearchView: View {
             
             Spacer()
         }
+        .navigationBarHidden(true)
     }
 }
+
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
