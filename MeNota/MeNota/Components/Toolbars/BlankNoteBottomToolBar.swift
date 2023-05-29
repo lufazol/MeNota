@@ -7,8 +7,15 @@
 
 import SwiftUI
 
+class sharedVar{
+    static let shared = sharedVar()
+    var isChecklistPressed = false
+    func toggle(){
+        isChecklistPressed = true
+    }
+}
+
 struct BlankNoteBottomToolBar: View {
-    
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
     @State private var isShowPhotoLibrary = false
@@ -16,9 +23,10 @@ struct BlankNoteBottomToolBar: View {
     
     var body: some View {
         HStack {
-            
             Button(action: {
-                // Perform action for the first toolbar button
+                sharedVar.shared.toggle()
+                print("APERTOUU")
+                print(sharedVar.shared.isChecklistPressed)
             }) {
                 Image(systemName: "checklist")
                     .resizable()
@@ -95,8 +103,9 @@ struct BlankNoteBottomToolBar: View {
     }
 }
 
-struct BlankNoteBottomToolBar_Previews: PreviewProvider {
+struct BlankNoteBottomToolBar_Preview: PreviewProvider {
     static var previews: some View {
         BlankNoteBottomToolBar()
     }
 }
+
