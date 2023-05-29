@@ -13,19 +13,24 @@ struct BlankNoteView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Type note", text: $text).padding()
+                TextField("Type note", text: $text)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.clear)
                 Spacer()
             }.toolbar{
                 ToolbarItemGroup(placement: .bottomBar) {
                     BlankNoteBottomToolBar()
                 }
             }
-        }.toolbar{
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing:
+            HStack {
+                Spacer()
                 BlankNoteTopToolBar()
             }
-        }
-
+        )
     }
 }
 
