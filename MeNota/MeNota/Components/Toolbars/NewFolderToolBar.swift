@@ -27,6 +27,5 @@ struct NewFolderToolbar: View {
                     .foregroundColor(.yellow)
             }
         }
-        
     }
 }

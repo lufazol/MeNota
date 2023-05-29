@@ -10,23 +10,28 @@ import SwiftUI
 
 struct NewFolderView: View {
     @Environment(\.dismiss) var dismiss
-    @State private var texto: String = "New folder"
+    @State private var text: String = "New folder"
+    
+    init() {
+            UITextField.appearance().clearButtonMode = .always
+    }
     
     var body: some View {
         NavigationView {
             VStack {
-    
-                TextField("Digite aqui", text: $texto)
-                    .cornerRadius(14)
+                HStack {
+                    TextField("", text: $text)
+                        .onSubmit {
+                            
+                        }
+                        
+                }.padding(EdgeInsets(top: 10, leading: 12, bottom: 10, trailing: 12))
+                    .background(Color(.systemGray5))
                     .frame(height: 44)
-                    .background(.gray)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .padding()
-                                .onAppear {
-                                    DispatchQueue.main.asyncAfter(deadline: .now()) {
-                                        texto = "Texto pré-escrito"
-                                    }
-                                }
+                    .cornerRadius(12)
+                    .accentColor(.yellow)
+                    
+                    
                 Spacer()
                     
             }.toolbar {
@@ -37,6 +42,7 @@ struct NewFolderView: View {
                 }
                 
             }
+            .padding()
         }
     }
 }
