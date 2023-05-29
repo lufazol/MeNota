@@ -16,9 +16,9 @@ struct writtenNotes: Identifiable, Hashable {
 struct NotesView: View {
     var body: some View {
         VStack {
-            SearchBar()
+            SearchBarButton()
                 .padding(.top, -15)
-            
+
             List {
                 Section(header: SectionHeaderView(text: "Today", capitalization: .none)) {
                     ForEach(dotlessNoteList.prefix(2)) { preview in
@@ -74,16 +74,13 @@ struct NotesView: View {
             .padding(.horizontal, -20)
         }
         .padding()
-        
         // to make it work on light mode:
         // .background(Color(UIColor.systemGray6))
         
         .navigationBarTitle("Notes")
-        .toolbar{
-            
-        }
     }
 }
+
 
 struct SectionHeaderView: View {
     let text: String
