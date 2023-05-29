@@ -34,23 +34,7 @@ struct NotesTopToolBar: View {
                             Button {
                                 print("Test")
                             } label: {
-                                    Text("Oldest First")
-                            }
-                            Button {
-                                print("Test")
-                            } label: {
-                                    Text("Newest First")
-                            }
-                            Divider()
-                            Button {
-                                print("Test")
-                            } label: {
-                                    Text("Title")
-                            }
-                            Button {
-                                print("Test")
-                            } label: {
-                                    Text("Date Created")
+                                    Text("Default (Date Edited)")
                             }
                             Button {
                                 print("Test")
@@ -60,7 +44,23 @@ struct NotesTopToolBar: View {
                             Button {
                                 print("Test")
                             } label: {
-                                    Text("Default (Date Edited)")
+                                    Text("Date Created")
+                            }
+                            Button {
+                                print("Test")
+                            } label: {
+                                    Text("Title")
+                            }
+                            Divider()
+                            Button {
+                                print("Test")
+                            } label: {
+                                    Text("Newest First")
+                            }
+                            Button {
+                                print("Test")
+                            } label: {
+                                    Text("Oldest First")
                             }
                         } label: {
                                 Text("Sort By")
