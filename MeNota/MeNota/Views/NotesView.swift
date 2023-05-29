@@ -76,6 +76,11 @@ struct NotesView: View {
         .padding()
         
         .navigationBarTitle("Notes")
+        .toolbar{
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                NotesTopToolBar()
+            }
+        }
     }
 }
 
