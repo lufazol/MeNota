@@ -40,14 +40,15 @@ struct BlankNoteView: View {
                     BlankNoteBottomToolBar()
                 }
             }
-        }.toolbar{
-            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                BlankNoteTopToolBar()
-            }
         }
-
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: HStack {
+            Spacer()
+            BlankNoteTopToolBar()
+        })
     }
 }
+                            
 
 struct BlankNoteView_Previews: PreviewProvider {
     static var previews: some View {
