@@ -78,6 +78,11 @@ struct NotesView: View {
         // .background(Color(UIColor.systemGray6))
         
         .navigationBarTitle("Notes")
+        .toolbar{
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                NotesTopToolBar()
+            }
+        }
     }
 }
 
