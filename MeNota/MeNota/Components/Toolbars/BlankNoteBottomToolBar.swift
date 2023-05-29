@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-/*class PressButton: ObservableObject{
-    @Published var isChecklistPressed = false
-    func toggle(){
-        isChecklistPressed = true
-    }
-}*/
-
 class sharedVar{
     static let shared = sharedVar()
     var isChecklistPressed = false
