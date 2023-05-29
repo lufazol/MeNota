@@ -7,26 +7,17 @@
 
 import SwiftUI
 
-struct BlankNoteView: View {
+struct CheckListView: View {
     @State private var text: String = ""
     @State var isChecked: Bool = false
-    
     func toggle(){isChecked = !isChecked}
-    
     var body: some View {
         NavigationView {
-            VStack {
-                if sharedVar.shared.isChecklistPressed{
-                    HStack{
-                        Button(action: toggle) {
-                            Image(systemName: isChecked ? "checkmark.circle.fill" : "circle")
-                        }
-                        TextField("Type note", text: $text)
-                    }.padding()
+            HStack{
+                Button(action: toggle) {
+                    Image(systemName: isChecked ? "checkmark.circle.fill" : "circle")
                 }
-                else{
-                    TextField("Type note", text: $text).padding()
-                }
+                TextField("Type note", text: $text).padding()
                 
                 Spacer()
                 
@@ -40,12 +31,12 @@ struct BlankNoteView: View {
                 BlankNoteTopToolBar()
             }
         }
-
     }
 }
 
-struct BlankNoteView_Previews: PreviewProvider {
+struct CheckListView_Previews: PreviewProvider {
     static var previews: some View {
-        BlankNoteView()
+        CheckListView()
     }
 }
+
