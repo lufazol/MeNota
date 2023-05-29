@@ -47,23 +47,23 @@ let noteList = [
  ]
 
 struct Folder : Identifiable {
- let id : Int
- let title : String
- let icon : String
- let quantity: Int
+    let id : Int
+    let title : String
+    let icon : String
+    let quantity: Int
 }
 
-let folderList = [
-   Folder(
-    id: 1,
-    title: "Notes",
-    icon: "folder",
-    quantity: 4
-  ),
-    Folder(
-    id: 2,
-    title: "Recently Deleted",
-    icon: "trash",
-    quantity: 1
-  )
- ]
+class FolderList: ObservableObject {
+    @Published var data: [Folder] = [Folder(
+        id: 1,
+        title: "Notes",
+        icon: "folder",
+        quantity: 4
+      ),
+        Folder(
+        id: 2,
+        title: "Recently Deleted",
+        icon: "trash",
+        quantity: 1
+      )]
+}
