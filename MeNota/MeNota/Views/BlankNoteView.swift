@@ -11,26 +11,20 @@ struct BlankNoteView: View {
     @State private var text: String = ""
 
     var body: some View {
-        NavigationView {
-            VStack {
-                TextField("Type note", text: $text)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.clear)
-                Spacer()
-            }.toolbar{
-                ToolbarItemGroup(placement: .bottomBar) {
-                    BlankNoteBottomToolBar()
-                }
+        VStack {
+            TextField("Type note", text: $text)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.clear)
+            Spacer()
+        }.toolbar{
+            ToolbarItemGroup(placement: .bottomBar) {
+                BlankNoteBottomToolBar()
             }
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing:
-            HStack {
-                Spacer()
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
                 BlankNoteTopToolBar()
             }
-        )
+        }
     }
 }
 

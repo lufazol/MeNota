@@ -44,6 +44,7 @@ struct FolderView: View {
             
         }
         .accentColor(.yellow)
+        .navigationViewStyle(StackNavigationViewStyle())
         .sheet(isPresented: $showingNewFolderView) {
             NewFolderView()
         }

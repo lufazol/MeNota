@@ -10,7 +10,7 @@ import SwiftUI
 struct NotesBottomToolBar: View {
     var body: some View {
         HStack {
-            Text("5 Notes")
+            Text("4 Notes")
             
             Spacer()
             
