@@ -23,9 +23,14 @@ struct BlankNoteView: View {
                         }
                         TextField("Type note", text: $text)
                     }.padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.clear)
                 }
                 else{
-                    TextField("Type note", text: $text).padding()
+                    TextField("Type note", text: $text)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.clear)
                 }
                 
                 Spacer()
