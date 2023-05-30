@@ -24,7 +24,7 @@ struct NewFolderToolbar: View {
             Spacer()
             
             Button { okAction() } label: {
-                Text("   OK").fontWeight(.bold)
+                Text("Done").fontWeight(.bold)
                     .foregroundColor(.yellow)
             }
         }
