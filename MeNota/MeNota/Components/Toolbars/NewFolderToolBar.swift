@@ -9,11 +9,12 @@ import Foundation
 import SwiftUI
 
 struct NewFolderToolbar: View {
-    let action: () -> Void
+    let okAction: () -> Void
+    let cancelAction: () -> Void
     
     var body: some View {
         HStack {
-            Button { action() } label: {
+            Button { cancelAction() } label: {
                 Text("Cancel")
                     .foregroundColor(.yellow)
             }
@@ -22,7 +23,7 @@ struct NewFolderToolbar: View {
             Text("New Folder").fontWeight(.semibold)
             Spacer()
             
-            NavigationLink(destination: BlankNoteView()) {
+            Button { okAction() } label: {
                 Text("   OK").fontWeight(.bold)
                     .foregroundColor(.yellow)
             }

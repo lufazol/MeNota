@@ -9,11 +9,13 @@ import Foundation
 import SwiftUI
 
 struct NewFolderView: View {
+    @ObservedObject var folderList: FolderList
     @Environment(\.dismiss) var dismiss
     @State private var text: String = "New folder"
     
-    init() {
-            UITextField.appearance().clearButtonMode = .always
+    init(folderList: FolderList) {
+        self.folderList = folderList
+        UITextField.appearance().clearButtonMode = .always
     }
     
     var body: some View {
@@ -22,7 +24,13 @@ struct NewFolderView: View {
                 HStack {
                     TextField("", text: $text)
                         .onSubmit {
-                            
+                            folderList.data.append(Folder(
+                                id: folderList.data.count + 1,
+                                title: text,
+                                icon: "folder",
+                                quantity: 0
+                              ))
+                            dismiss()
                         }
                         
                 }.padding(EdgeInsets(top: 10, leading: 12, bottom: 10, trailing: 12))
@@ -36,9 +44,19 @@ struct NewFolderView: View {
                     
             }.toolbar {
                 ToolbarItemGroup(placement: .principal) {
-                    NewFolderToolbar {
-                        dismiss()
-                    }
+                    NewFolderToolbar (
+                        okAction: {
+                            folderList.data.append(Folder(
+                                id: folderList.data.count + 1,
+                                title: text,
+                                icon: "folder",
+                                quantity: 0
+                              ))
+                            dismiss()
+                            
+                        },
+                        cancelAction: { dismiss() }
+                    )
                 }
                 
             }
@@ -46,4 +64,3 @@ struct NewFolderView: View {
         }
     }
 }
-

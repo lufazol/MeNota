@@ -7,16 +7,18 @@
 
 import SwiftUI
 
-import SwiftUI
+
+
 
 struct FolderView: View {
     @State private var showingNewFolderView = false
+    @StateObject var folderList = FolderList()
 
     var body: some View {
         NavigationView {
             List {
-                Section(header: SectionHeaderView(text: "iCloud", capitalization: .none).padding(.top, -10)) {
-                    ForEach(folderList) { folder in
+                Section(header: SectionHeaderView(text: "iCloud", capitalization: .none)) {
+                    ForEach(folderList.data) { folder in
                         NavigationLink(destination: NotesView()) {
                             HStack {
                                 Image(systemName: folder.icon)
@@ -43,16 +45,13 @@ struct FolderView: View {
             }
             
         }
+        // the line below fixes the problems we were having with the bottom toolbar disappearing when outside of a redeclaration of a navigation view
+        .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(.yellow)
         .navigationViewStyle(StackNavigationViewStyle())
         .sheet(isPresented: $showingNewFolderView) {
-            NewFolderView()
+            NewFolderView(folderList: folderList)
         }
-    }
-}
-
-struct FolderView_Previews: PreviewProvider {
-    static var previews: some View {
-        FolderView()
+        
     }
 }
