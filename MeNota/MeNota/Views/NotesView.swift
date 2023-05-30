@@ -9,9 +9,11 @@ import SwiftUI
 
 struct NotesView: View {
     @ObservedObject var noteList: NoteList
+    var title: String
     
-    init(noteList: NoteList) {
+    init(noteList: NoteList, title: String) {
         self.noteList = noteList
+        self.title = title
     }
     
     
@@ -19,23 +21,34 @@ struct NotesView: View {
         VStack {
             SearchBarButton()
                 .padding(.top, -15)
-
-            List {
-                createSection(header: "Today", notes: noteList.noteList)
-                
-                createSection(header: "Previous 7 Days", notes: noteList.noteList)
+            
+            if(!noteList.noteList.isEmpty) {
+                List {
+                    if(!getNotesCreatedToday(notes: noteList.noteList).isEmpty) {
+                        createSection(header: "Today", notes: getNotesCreatedToday(notes: noteList.noteList))
+                    }
+                    if(!getNotesCreatedWithinLast15Days(notes: noteList.noteList).isEmpty) {
+                        createSection(header: "Previous days", notes: getNotesCreatedWithinLast15Days(notes: noteList.noteList))
+                    }
+                }
+                .padding(.horizontal, -20)
             }
-            .padding(.horizontal, -20)
+            Spacer()
         }
         .padding()
-        .navigationBarTitle("Notes")
+        .navigationBarTitle(title)
         .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 NotesTopToolBar()
             }
-            
-            ToolbarItemGroup(placement: .bottomBar) {
-                NotesBottomToolBar()
+            if(noteList.noteList.isEmpty) {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    NotesBottomToolBar(notesNumber: "Nenhuma nota")
+                }
+            } else {
+                ToolbarItemGroup(placement: .bottomBar) {
+                    NotesBottomToolBar(notesNumber: "\($noteList.noteList.count) notes")
+                }
             }
         }
         .background(Color.clear.opacity(0.3))
@@ -82,5 +95,26 @@ struct SectionHeaderView: View {
             .textCase(capitalization)
             .alignmentGuide(.leading) { _ in 0 }
             .padding(.vertical, 5)
+    }
+}
+
+
+func getNotesCreatedToday(notes: [Note]) -> [Note] {
+        let today = Calendar.current.startOfDay(for: Date())
+        
+        return notes.filter { note in
+            let noteDate = Calendar.current.startOfDay(for: note.date)
+            return noteDate == today
+        }
+    }
+
+
+func getNotesCreatedWithinLast15Days(notes: [Note]) -> [Note] {
+    let today = Calendar.current.startOfDay(for: Date())
+    let fifteenDaysAgo = Calendar.current.date(byAdding: .day, value: -15, to: today)!
+    
+    return notes.filter { note in
+        let noteDate = Calendar.current.startOfDay(for: note.date)
+        return noteDate >= fifteenDaysAgo && noteDate <= today
     }
 }

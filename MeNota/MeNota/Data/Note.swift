@@ -13,8 +13,8 @@ struct Note : Identifiable {
     let description : String
     let tag : String
     let time: String
+    let date: Date
 }
-
 
 struct Folder : Identifiable {
     let id : Int
@@ -43,7 +43,8 @@ class FolderList: ObservableObject {
             title: "Reminders",
             description: "1. Call the bank to talk about my account\n2. Ask Milena to tell me her story\n3. Go to the grocery",
             tag: "Reminder",
-            time: "10:30"
+            time: "10:30",
+            date: Date.now
             ),
             
             Note(
@@ -51,7 +52,8 @@ class FolderList: ObservableObject {
             title: "Market List",
             description: "1. Pasta\n2. Tomato\n3. Lettuce\n4. Rice\n5. Beans",
             tag: "Reminder",
-            time: "09:45"
+            time: "09:45",
+            date:  getDateBeforeFifteenDays()
             ),])
       ),
         Folder(
@@ -64,7 +66,8 @@ class FolderList: ObservableObject {
             title: "Work Tasks",
             description: "1. Prepare presentation for the meeting\n2. Review project proposal\n3. Follow up with clients",
             tag: "Work",
-            time: "Monday"
+            time: "Monday",
+            date: getDateBeforeFifteenDays()
            ),
                                       
            Note(
@@ -72,7 +75,20 @@ class FolderList: ObservableObject {
             title: "Travel Plans",
             description: "1. Book flights\n2. Reserve hotel\n3. Create itinerary",
             tag: "Travel",
-            time: "Sunday"
+            time: "Sunday",
+            date: getDateBeforeFifteenDays()
            )
       ]))]
+}
+
+func getDateBeforeFifteenDays() -> Date {
+        var dateComponent = DateComponents()
+        dateComponent.day = -15
+        
+        if let pastDate = Calendar.current.date(byAdding: dateComponent, to: Date()) {
+            return pastDate
+        }
+        
+        // Caso ocorra algum erro ao calcular a data, retorna a data atual
+        return Date()
 }
