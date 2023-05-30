@@ -32,7 +32,7 @@ struct WrittenNoteView: View {
                 Spacer()
             }.toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
-                    BlankNoteBottomToolBar(isChecklistPressed: SharedVar)
+                    BlankNoteBottomToolBar(isChecklistPressed: SharedVar, isCanvasPressed: SharedVar)
                 }
             }
         .navigationBarTitleDisplayMode(.inline)

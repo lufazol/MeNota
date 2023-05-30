@@ -9,8 +9,12 @@ import SwiftUI
 
 class sharedVar: ObservableObject{
     @Published var isChecklistPressed = false
-    func toggle(){
+    @Published var isCanvasPressed = false
+    func toggleChecklist(){
         isChecklistPressed = true
+    }
+    func toggleCanvas(){
+        isCanvasPressed = true
     }
 }
 
@@ -20,11 +24,12 @@ struct BlankNoteBottomToolBar: View {
     @State private var isShowPhotoLibrary = false
     @State private var isShowCamera = false
     @ObservedObject var isChecklistPressed: sharedVar
+    @ObservedObject var isCanvasPressed: sharedVar
     
     var body: some View {
         HStack {
             Button(action: {
-                isChecklistPressed.toggle()
+                isChecklistPressed.toggleChecklist()
             }) {
                 Image(systemName: "checklist")
                     .resizable()
@@ -74,16 +79,15 @@ struct BlankNoteBottomToolBar: View {
             
             Spacer()
             
-            NavigationLink(
-                destination: CanvasView())
-                {
-                    Image(systemName: "pencil.tip.crop.circle")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 25, height: 25)
-                }
-                .padding()
-
+            Button(action: {
+                isCanvasPressed.toggleCanvas()
+            }) {
+                Image(systemName: "pencil.tip.crop.circle")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 25, height: 25)
+            }
+            .padding()
             
             Spacer()
 

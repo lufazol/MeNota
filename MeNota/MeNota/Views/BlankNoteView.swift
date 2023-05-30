@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import PencilKit
 
 struct BlankNoteView: View {
     @State private var text: String = ""
     @State var isChecked: Bool = false
     @StateObject var SharedVar = sharedVar()
+    private var canvasView = PKCanvasView()
     
     func toggle(){isChecked = !isChecked}
     
@@ -26,6 +28,55 @@ struct BlankNoteView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.clear)
                 }
+                else if SharedVar.isCanvasPressed{
+                        VStack {
+                            MyCanvas(canvasView: canvasView)
+                        }
+                        .toolbar{
+                            ToolbarItemGroup(placement: .principal) {
+                                HStack {
+                                    Button(action: {
+                                        // Perform action for the first toolbar button
+                                    }) {
+                                        Image(systemName: "arrow.uturn.left.circle")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 20)
+                                    }
+
+                                    Button(action: {
+                                        // Perform action for the first toolbar button
+                                    }) {
+                                        Image(systemName: "arrow.uturn.right.circle")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 20)
+                                    }
+                                }
+                                .padding()
+                            }
+                            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                                HStack {
+                                    Button(action: {
+                                        // Perform action for the first toolbar button
+                                    }) {
+                                        Image(systemName: "ellipsis.circle")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 20, height: 20)
+                                    }
+
+                                    Button(action: {
+                                        // Perform action for the second toolbar button
+                                    })
+                                    {
+                                        Text("Done")
+                                    }
+                                }
+                                .padding(.leading)
+                            }
+                        }
+                    }
                 else{
                     TextEditor(text: $text)
                         .padding()
@@ -36,7 +87,7 @@ struct BlankNoteView: View {
                 Spacer()
             }.toolbar{
                 ToolbarItemGroup(placement: .bottomBar) {
-                    BlankNoteBottomToolBar(isChecklistPressed: SharedVar)
+                    BlankNoteBottomToolBar(isChecklistPressed: SharedVar, isCanvasPressed: SharedVar)
                 }
                 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
