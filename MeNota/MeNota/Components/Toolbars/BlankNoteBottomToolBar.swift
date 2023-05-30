@@ -11,6 +11,9 @@ class sharedVar: ObservableObject{
     @Published var isChecklistPressed = false
     @Published var isCanvasPressed = false
     @Published var isNewNotePressed = false
+    
+    
+    
     func toggleChecklist(){
         isChecklistPressed = true
     }
@@ -30,6 +33,8 @@ struct BlankNoteBottomToolBar: View {
     @ObservedObject var isChecklistPressed: sharedVar
     @ObservedObject var isCanvasPressed: sharedVar
     @ObservedObject var isNewNotePressed: sharedVar
+    
+    @Binding var text:String
     
     var body: some View {
         HStack {
@@ -97,6 +102,7 @@ struct BlankNoteBottomToolBar: View {
             Spacer()
 
             Button(action: {
+                clearText()
                 isNewNotePressed.toggleNewNote()
             }) {
                 Image(systemName: "square.and.pencil")
@@ -107,5 +113,9 @@ struct BlankNoteBottomToolBar: View {
             .padding()
 
         }
+    }
+    
+    private func clearText() {
+        text=""
     }
 }
