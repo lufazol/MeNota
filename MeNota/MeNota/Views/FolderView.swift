@@ -45,6 +45,8 @@ struct FolderView: View {
             }
             
         }
+        // the line below fixes the problems we were having with the bottom toolbar disappearing when outside of a redeclaration of a navigation view
+        .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(.yellow)
         .sheet(isPresented: $showingNewFolderView) {
             NewFolderView(folderList: folderList)

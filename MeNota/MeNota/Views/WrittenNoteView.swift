@@ -11,24 +11,22 @@ struct WrittenNoteView: View {
     @State private var title: String
     @State private var text: String
 
-    // testing with the first item of noteList
-    init() {
-        guard let firstNote = noteList.first else {
-            fatalError("No notes available")
-        }
-        _title = State(initialValue: firstNote.title)
-        _text = State(initialValue: firstNote.description)
+    init(note: Note) {
+        _title = State(initialValue: note.title)
+        _text = State(initialValue: note.description)
     }
 
     var body: some View {
-        NavigationView {
+        //NavigationView {
             VStack {
                 TextField("Title", text: $title)
                     .font(.title)
-                    .padding()
+                    .padding(.horizontal)
+                    .padding(.bottom, 0)
 
                 TextEditor(text: $text)
-                    .padding()
+                    .padding(.leading, 25)
+                    .padding(.top, -10)
                     .background(Color(UIColor.systemBackground))
                     .cornerRadius(8)
                 Spacer()
@@ -37,7 +35,7 @@ struct WrittenNoteView: View {
                     BlankNoteBottomToolBar()
                 }
             }
-        }
+        //}
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing:
             HStack {
@@ -50,6 +48,11 @@ struct WrittenNoteView: View {
 
 struct WrittenNoteView_Previews: PreviewProvider {
     static var previews: some View {
-        WrittenNoteView()
+        let noteList = NoteList()
+        if let firstNote = noteList.note.first {
+            return WrittenNoteView(note: firstNote)
+        } else {
+            return WrittenNoteView(note: Note(id: 0, title: "", description: "", tag: "", time: ""))
+        }
     }
 }

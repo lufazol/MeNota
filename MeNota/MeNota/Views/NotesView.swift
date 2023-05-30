@@ -7,83 +7,59 @@
 
 import SwiftUI
 
-struct writtenNotes: Identifiable, Hashable {
-    let title: String
-    let subtitle: String
-    let id = NSUUID().uuidString
-}
-
 struct NotesView: View {
+    @StateObject var noteList = NoteList()
+    
     var body: some View {
         VStack {
             SearchBarButton()
                 .padding(.top, -15)
 
             List {
-                Section(header: SectionHeaderView(text: "Today", capitalization: .none)) {
-                    ForEach(noteList.prefix(2)) { preview in
-                        VStack(alignment: .leading) {
-                            Text(preview.title)
-                                .font(.headline)
-                            
-                            HStack {
-                                Text(preview.time)
-                                
-                                let seccondChar = preview.description.dropFirst().first
-                                
-                                if (seccondChar == ".") {
-                                    Text(preview.description.dropFirst().dropFirst())
-                                } else {
-                                    Text(preview.description)
-                                }
-                                
-                            }.font(.subheadline)
-                            .foregroundColor(.secondary)
-                            .lineLimit(1)
-                        }
-                    }
-                    .padding(.horizontal, 10)
-                }
+                createSection(header: "Today", notes: Array(noteList.note.prefix(2)))
                 
-                Section(header: SectionHeaderView(text: "Previous 7 Days", capitalization: .none)) {
-                    ForEach(noteList.prefix(4).suffix(2)) { preview in
-                        VStack(alignment: .leading) {
-                            Text(preview.title)
-                                .font(.headline)
-                            
-                            HStack {
-                                Text(preview.time)
-                                
-                                let seccondChar = preview.description.dropFirst().first
-                                
-                                if (seccondChar == ".") {
-                                    Text(preview.description.dropFirst().dropFirst())
-                                } else {
-                                    Text(preview.description)
-                                }
-                                
-                            }.font(.subheadline)
-                            .foregroundColor(.secondary)
-                            .lineLimit(1)
-                            }
-                    }
-                    .padding(.horizontal, 10)
-                }
-                
+                createSection(header: "Previous 7 Days", notes: Array(noteList.note.dropFirst(2)))
             }
             .padding(.horizontal, -20)
         }
         .padding()
-        
         .navigationBarTitle("Notes")
-        .toolbar{
+        .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 NotesTopToolBar()
             }
         }
     }
+    
+    func createSection(header: String, notes: [Note]) -> some View {
+        Section(header: SectionHeaderView(text: header, capitalization: .none)) {
+            ForEach(notes) { note in
+                NavigationLink(destination: WrittenNoteView(note: note)) {
+                    VStack(alignment: .leading) {
+                        Text(note.title)
+                            .font(.headline)
+                        
+                        HStack {
+                            Text(note.time)
+                            
+                            let secondChar = note.description.dropFirst().first
+                            
+                            if secondChar == "." {
+                                Text(note.description.dropFirst().dropFirst())
+                            } else {
+                                Text(note.description)
+                            }
+                        }
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .lineLimit(1)
+                    }
+                }
+            }
+            .padding(.horizontal, 10)
+        }
+    }
 }
-
 
 struct SectionHeaderView: View {
     let text: String
