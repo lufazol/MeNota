@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct NotesBottomToolBar: View {
+    var notesNumber: String
     var body: some View {
         Spacer()
 
-        Text("4 Notes")
+        Text(notesNumber)
             .font(.system(size: 14))
     
         Spacer()
@@ -19,11 +20,5 @@ struct NotesBottomToolBar: View {
         NavigationLink(destination: BlankNoteView()) {
             Image(systemName: "square.and.pencil")
         }
-    }
-}
-
-struct NotesBottomToolBar_Previews: PreviewProvider {
-    static var previews: some View {
-        NotesBottomToolBar()
     }
 }
