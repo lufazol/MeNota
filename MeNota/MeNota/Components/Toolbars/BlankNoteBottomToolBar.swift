@@ -7,11 +7,14 @@
 
 import SwiftUI
 
-class sharedVar{
-    static let shared = sharedVar()
-    var isChecklistPressed = false
-    func toggle(){
+class sharedVar: ObservableObject{
+    @Published var isChecklistPressed = false
+    @Published var isCanvasPressed = false
+    func toggleChecklist(){
         isChecklistPressed = true
+    }
+    func toggleCanvas(){
+        isCanvasPressed = true
     }
 }
 
@@ -20,13 +23,13 @@ struct BlankNoteBottomToolBar: View {
     @State private var selectedImage: UIImage?
     @State private var isShowPhotoLibrary = false
     @State private var isShowCamera = false
+    @ObservedObject var isChecklistPressed: sharedVar
+    @ObservedObject var isCanvasPressed: sharedVar
     
     var body: some View {
         HStack {
             Button(action: {
-                sharedVar.shared.toggle()
-                print("APERTOUU")
-                print(sharedVar.shared.isChecklistPressed)
+                isChecklistPressed.toggleChecklist()
             }) {
                 Image(systemName: "checklist")
                     .resizable()
@@ -76,16 +79,15 @@ struct BlankNoteBottomToolBar: View {
             
             Spacer()
             
-            NavigationLink(
-                destination: CanvasView())
-                {
-                    Image(systemName: "pencil.tip.crop.circle")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 25, height: 25)
-                }
-                .padding()
-
+            Button(action: {
+                isCanvasPressed.toggleCanvas()
+            }) {
+                Image(systemName: "pencil.tip.crop.circle")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 25, height: 25)
+            }
+            .padding()
             
             Spacer()
 
@@ -102,10 +104,3 @@ struct BlankNoteBottomToolBar: View {
         }
     }
 }
-
-struct BlankNoteBottomToolBar_Preview: PreviewProvider {
-    static var previews: some View {
-        BlankNoteBottomToolBar()
-    }
-}
-
