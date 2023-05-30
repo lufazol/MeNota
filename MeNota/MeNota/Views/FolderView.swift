@@ -19,7 +19,7 @@ struct FolderView: View {
             List {
                 Section(header: SectionHeaderView(text: "iCloud", capitalization: .none)) {
                     ForEach(folderList.data) { folder in
-                        NavigationLink(destination: NotesView(noteList: folder.notes)) {
+                        NavigationLink(destination: NotesView(noteList: folder.notes, title: folder.title)) {
                             HStack {
                                 Image(systemName: folder.icon)
                                     .foregroundColor(.yellow)
