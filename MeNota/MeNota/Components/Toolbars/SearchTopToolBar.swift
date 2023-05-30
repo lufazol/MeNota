@@ -41,22 +41,22 @@ struct SearchTopToolBar: View {
                 }
             }
             
-            List(filteredNotes) { note in
-                VStack(alignment: .leading) {
-                    Text(note.title)
-                        .font(.headline)
-                    Text(note.description)
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                    Text("Tag: \(note.tag)")
-                        .font(.caption)
-                        .foregroundColor(.blue)
-                    Text("Time: \(note.time)")
-                        .font(.caption)
-                        .foregroundColor(.green)
-                }
-                .padding(.vertical, 8)
-            }
+//            List(filteredNotes) { note in
+//                VStack(alignment: .leading) {
+//                    Text(note.title)
+//                        .font(.headline)
+//                    Text(note.description)
+//                        .font(.subheadline)
+//                        .foregroundColor(.gray)
+//                    Text("Tag: \(note.tag)")
+//                        .font(.caption)
+//                        .foregroundColor(.blue)
+//                    Text("Time: \(note.time)")
+//                        .font(.caption)
+//                        .foregroundColor(.green)
+//                }
+//                .padding(.vertical, 8)
+//            }
         }
     }
 }
