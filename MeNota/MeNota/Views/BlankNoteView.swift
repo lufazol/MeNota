@@ -10,33 +10,33 @@ import SwiftUI
 struct BlankNoteView: View {
     @State private var text: String = ""
     @State var isChecked: Bool = false
+    @StateObject var SharedVar = sharedVar()
     
     func toggle(){isChecked = !isChecked}
     
     var body: some View {
             VStack {
-                if sharedVar.shared.isChecklistPressed{
+                if SharedVar.isChecklistPressed{
                     HStack{
                         Button(action: toggle) {
                             Image(systemName: isChecked ? "checkmark.circle.fill" : "circle")
                         }
-                        TextField("Type note", text: $text)
+                        TextField("", text: $text)
                     }.padding()
                     .frame(maxWidth: .infinity)
                     .background(Color.clear)
                 }
                 else{
-                    TextField("Type note", text: $text)
+                    TextEditor(text: $text)
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.clear)
                 }
                 
                 Spacer()
-                
             }.toolbar{
                 ToolbarItemGroup(placement: .bottomBar) {
-                    BlankNoteBottomToolBar()
+                    BlankNoteBottomToolBar(isChecklistPressed: SharedVar)
                 }
                 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {

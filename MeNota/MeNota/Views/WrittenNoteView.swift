@@ -10,6 +10,7 @@ import SwiftUI
 struct WrittenNoteView: View {
     @State private var title: String
     @State private var text: String
+    @StateObject var SharedVar = sharedVar()
 
     init(note: Note) {
         _title = State(initialValue: note.title)
@@ -31,7 +32,7 @@ struct WrittenNoteView: View {
                 Spacer()
             }.toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
-                    BlankNoteBottomToolBar()
+                    BlankNoteBottomToolBar(isChecklistPressed: SharedVar)
                 }
             }
         .navigationBarTitleDisplayMode(.inline)
