@@ -19,48 +19,45 @@ struct NewFolderView: View {
     }
     
     var body: some View {
-        NavigationView {
-            VStack {
-                HStack {
-                    TextField("", text: $text)
-                        .onSubmit {
-                            folderList.data.append(Folder(
-                                id: folderList.data.count + 1,
-                                title: text,
-                                icon: "folder",
-                                quantity: 0
-                              ))
-                            dismiss()
-                        }
+        VStack {
+            HStack {
+                NewFolderToolbar (
+                    okAction: {
+                        folderList.data.append(Folder(
+                            id: folderList.data.count + 1,
+                            title: text,
+                            icon: "folder",
+                            quantity: 0
+                          ))
+                        dismiss()
                         
-                }.padding(EdgeInsets(top: 10, leading: 12, bottom: 10, trailing: 12))
-                    .background(Color(.systemGray5))
-                    .frame(height: 44)
-                    .cornerRadius(12)
-                    .accentColor(.yellow)
-                    
-                    
-                Spacer()
-                    
-            }.toolbar {
-                ToolbarItemGroup(placement: .principal) {
-                    NewFolderToolbar (
-                        okAction: {
-                            folderList.data.append(Folder(
-                                id: folderList.data.count + 1,
-                                title: text,
-                                icon: "folder",
-                                quantity: 0
-                              ))
-                            dismiss()
-                            
-                        },
-                        cancelAction: { dismiss() }
-                    )
-                }
-                
+                    },
+                    cancelAction: { dismiss() }
+                )
             }
-            .padding()
+            .padding(.bottom)
+            HStack {
+                TextField("", text: $text)
+                    .onSubmit {
+                        folderList.data.append(Folder(
+                            id: folderList.data.count + 1,
+                            title: text,
+                            icon: "folder",
+                            quantity: 0
+                          ))
+                        dismiss()
+                    }
+                    
+            }.padding(EdgeInsets(top: 10, leading: 12, bottom: 10, trailing: 12))
+                .background(Color(.systemGray5))
+                .frame(height: 44)
+                .cornerRadius(12)
+                .accentColor(.yellow)
+                
+                
+            Spacer()
+                
         }
+        .padding()
     }
 }
