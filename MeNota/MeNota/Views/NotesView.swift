@@ -38,6 +38,7 @@ struct NotesView: View {
                 NotesBottomToolBar()
             }
         }
+        .background(Color.clear.opacity(0.3))
     }
     
     func createSection(header: String, notes: [Note]) -> some View {

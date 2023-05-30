@@ -35,7 +35,7 @@ struct FolderView: View {
             .listStyle(InsetGroupedListStyle())
             
             .navigationBarTitle("Folders")
-            .navigationBarItems(trailing: NavigationLink(destination: CanvasView()) {
+            .navigationBarItems(trailing: NavigationLink(destination: BlankNoteView()) {
                 Text("Edit")
             })
             .toolbar {

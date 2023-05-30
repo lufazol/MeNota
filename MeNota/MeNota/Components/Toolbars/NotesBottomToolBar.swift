@@ -9,14 +9,15 @@ import SwiftUI
 
 struct NotesBottomToolBar: View {
     var body: some View {
-        HStack {
-            Text("4 Notes")
-            
-            Spacer()
-            
-            NavigationLink(destination: BlankNoteView()) {
-                Image(systemName: "square.and.pencil")
-            }
+        Spacer()
+
+        Text("4 Notes")
+            .font(.system(size: 14))
+    
+        Spacer()
+                            
+        NavigationLink(destination: BlankNoteView()) {
+            Image(systemName: "square.and.pencil")
         }
     }
 }
