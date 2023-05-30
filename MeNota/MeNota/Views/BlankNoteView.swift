@@ -14,6 +14,10 @@ struct BlankNoteView: View {
     @StateObject var SharedVar = sharedVar()
     private var canvasView = PKCanvasView()
     
+    func clear(){
+        text = ""
+    }
+    
     func toggle(){isChecked = !isChecked}
     
     var body: some View {
@@ -28,6 +32,7 @@ struct BlankNoteView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.clear)
                 }
+                
                 else if SharedVar.isCanvasPressed{
                         VStack {
                             MyCanvas(canvasView: canvasView)
@@ -77,6 +82,9 @@ struct BlankNoteView: View {
                             }
                         }
                     }
+                
+             
+                
                 else{
                     TextEditor(text: $text)
                         .padding()
@@ -85,9 +93,10 @@ struct BlankNoteView: View {
                 }
                 
                 Spacer()
+                
             }.toolbar{
                 ToolbarItemGroup(placement: .bottomBar) {
-                    BlankNoteBottomToolBar(isChecklistPressed: SharedVar, isCanvasPressed: SharedVar)
+                    BlankNoteBottomToolBar(isChecklistPressed: SharedVar, isCanvasPressed: SharedVar, isNewNotePressed: SharedVar)
                 }
                 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
