@@ -27,7 +27,8 @@ struct NewFolderView: View {
                             id: folderList.data.count + 1,
                             title: text,
                             icon: "folder",
-                            quantity: 0
+                            quantity: 0,
+                            notes: NoteList(noteList: [])
                           ))
                         dismiss()
                         
@@ -43,7 +44,8 @@ struct NewFolderView: View {
                             id: folderList.data.count + 1,
                             title: text,
                             icon: "folder",
-                            quantity: 0
+                            quantity: 0,
+                            notes: NoteList(noteList: [])
                           ))
                         dismiss()
                     }

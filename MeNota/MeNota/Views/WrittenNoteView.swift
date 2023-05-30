@@ -43,14 +43,3 @@ struct WrittenNoteView: View {
         )
     }
 }
-
-struct WrittenNoteView_Previews: PreviewProvider {
-    static var previews: some View {
-        let noteList = NoteList()
-        if let firstNote = noteList.note.first {
-            return WrittenNoteView(note: firstNote)
-        } else {
-            return WrittenNoteView(note: Note(id: 0, title: "", description: "", tag: "", time: ""))
-        }
-    }
-}

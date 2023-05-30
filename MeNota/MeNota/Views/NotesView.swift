@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct NotesView: View {
-    @StateObject var noteList = NoteList()
+    @ObservedObject var noteList: NoteList
+    
+    init(noteList: NoteList) {
+        self.noteList = noteList
+    }
+    
     
     var body: some View {
         VStack {
@@ -16,9 +21,9 @@ struct NotesView: View {
                 .padding(.top, -15)
 
             List {
-                createSection(header: "Today", notes: Array(noteList.note.prefix(2)))
+                createSection(header: "Today", notes: noteList.noteList)
                 
-                createSection(header: "Previous 7 Days", notes: Array(noteList.note.dropFirst(2)))
+                createSection(header: "Previous 7 Days", notes: noteList.noteList)
             }
             .padding(.horizontal, -20)
         }
@@ -76,11 +81,5 @@ struct SectionHeaderView: View {
             .textCase(capitalization)
             .alignmentGuide(.leading) { _ in 0 }
             .padding(.vertical, 5)
-    }
-}
-
-struct NotesView_Previews: PreviewProvider {
-    static var previews: some View {
-        NotesView()
     }
 }
