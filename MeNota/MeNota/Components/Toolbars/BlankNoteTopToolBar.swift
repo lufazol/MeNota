@@ -13,7 +13,14 @@ struct BlankNoteTopToolBar: View {
             Spacer()
             
             Button(action: {
-                // Perform action for the first toolbar button
+                // Perform action for the share button
+                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                      let window = windowScene.windows.first else {
+                    return
+                }
+                
+                let shareSheet = UIActivityViewController(activityItems: ["Sharing content"], applicationActivities: nil)
+                window.rootViewController?.present(shareSheet, animated: true, completion: nil)
             }) {
                 Image(systemName: "square.and.arrow.up")
                     .resizable()
