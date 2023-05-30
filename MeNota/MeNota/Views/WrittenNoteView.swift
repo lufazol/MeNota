@@ -17,7 +17,6 @@ struct WrittenNoteView: View {
     }
 
     var body: some View {
-        //NavigationView {
             VStack {
                 TextField("Title", text: $title)
                     .font(.title)
@@ -35,7 +34,6 @@ struct WrittenNoteView: View {
                     BlankNoteBottomToolBar()
                 }
             }
-        //}
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(trailing:
             HStack {

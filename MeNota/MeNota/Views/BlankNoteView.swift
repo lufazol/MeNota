@@ -14,7 +14,6 @@ struct BlankNoteView: View {
     func toggle(){isChecked = !isChecked}
     
     var body: some View {
-        //NavigationView {
             VStack {
                 if sharedVar.shared.isChecklistPressed{
                     HStack{
@@ -39,13 +38,12 @@ struct BlankNoteView: View {
                 ToolbarItemGroup(placement: .bottomBar) {
                     BlankNoteBottomToolBar()
                 }
+                
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    BlankNoteTopToolBar()
+                }
             }
-        //}
         .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: HStack {
-            Spacer()
-            BlankNoteTopToolBar()
-        })
     }
 }
                             
