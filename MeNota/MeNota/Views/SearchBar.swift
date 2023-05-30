@@ -12,7 +12,8 @@
 import SwiftUI
 
 struct SearchBar: View {
-    @State var textFieldText = ""
+    @Binding var text: String
+    //@State var textFieldText = ""
     @State var dataArray: [String] = []
 
     var body: some View {
@@ -20,17 +21,13 @@ struct SearchBar: View {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.gray)
             
-            TextField("Search", text: $textFieldText)
-                .submitLabel(.search)
-                .onSubmit {
-                    saveText()
-                }
+            TextField("Search", text: $text)
                 .foregroundColor(.white)
                 
             // Delete button becomes available when the user starts typing
-            if !textFieldText.isEmpty {
+            if !text.isEmpty {
                 Button(action: {
-                    textFieldText = ""
+                    text = ""
                 }) {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundColor(.gray)
@@ -46,15 +43,10 @@ struct SearchBar: View {
             Text(data)
         }
     }
-    
-    func saveText() {
-        dataArray.append(textFieldText)
-        textFieldText = ""
-    }
 }
 
-struct SearchBar_Previews: PreviewProvider {
-  static var previews: some View {
-    SearchBar()
-  }
-}
+//struct SearchBar_Previews: PreviewProvider {
+//  static var previews: some View {
+//    SearchBar()
+//  }
+//}
