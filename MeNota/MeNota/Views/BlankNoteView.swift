@@ -9,10 +9,18 @@ import SwiftUI
 import PencilKit
 
 struct BlankNoteView: View {
+    @State private var title: String = ""
     @State private var text: String = ""
     @State var isChecked: Bool = false
     @StateObject var SharedVar = sharedVar()
     private var canvasView = PKCanvasView()
+    
+    init(note: Note = Note(id: 0, title: "", description: "", tag: "", time: "", date: Date.now)) {
+        _title = State(initialValue: note.title)
+        _text = State(initialValue: note.description)
+
+        UITextField.appearance().clearButtonMode = .never
+    }
     
     func clear(){
         text = ""
@@ -86,6 +94,10 @@ struct BlankNoteView: View {
              
                 
                 else{
+                    TextField("Title", text: $title)
+                        .font(.title)
+                        .padding(.horizontal)
+                        .padding(.bottom, 0)
                     TextEditor(text: $text)
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -104,11 +116,5 @@ struct BlankNoteView: View {
                 }
             }
         .navigationBarTitleDisplayMode(.inline)
-    }
-}
-                            
-struct BlankNoteView_Previews: PreviewProvider {
-    static var previews: some View {
-        BlankNoteView()
     }
 }

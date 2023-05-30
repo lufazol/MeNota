@@ -57,7 +57,7 @@ struct NotesView: View {
     func createSection(header: String, notes: [Note]) -> some View {
         Section(header: SectionHeaderView(text: header, capitalization: .none)) {
             ForEach(notes) { note in
-                NavigationLink(destination: WrittenNoteView(note: note)) {
+                NavigationLink(destination: BlankNoteView(note: note)) {
                     VStack(alignment: .leading) {
                         Text(note.title)
                             .font(.headline)
