@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
+    @FocusState private var keyboardFocused: Bool
     @State private var searchText = ""
     @State private var showFilteredResults = false
     @StateObject private var folderList = FolderList()
@@ -36,7 +37,12 @@ struct SearchView: View {
     var body: some View {
         VStack {
             SearchTopToolBar(text: $searchText, showFilteredResults: $showFilteredResults)
-                //.padding(.top, -50)
+                .focused($keyboardFocused)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        keyboardFocused = true
+                    }
+                }
                 .padding(.bottom, -10)
             
             if showFilteredResults && !searchText.isEmpty {
