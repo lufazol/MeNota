@@ -9,10 +9,18 @@ import SwiftUI
 import PencilKit
 
 struct BlankNoteView: View {
+    @State private var title: String = ""
     @State private var text: String = ""
     @State var isChecked: Bool = false
     @StateObject var SharedVar = sharedVar()
     private var canvasView = PKCanvasView()
+    
+    init(note: Note = Note(id: 0, title: "", description: "", tag: "", time: "", date: Date.now)) {
+           _title = State(initialValue: note.title)
+           _text = State(initialValue: note.description)
+
+           UITextField.appearance().clearButtonMode = .never
+       }
     
     
     func toggle(){isChecked = !isChecked}
@@ -81,8 +89,13 @@ struct BlankNoteView: View {
                     }
                 
                 else{
+                    TextField("Title", text: $title)
+                    .font(.system(size: 26))
+                    .padding(.horizontal)
+                    .padding(.bottom, 0)
+                    .fontWeight(.bold)
                     TextEditor(text: $text)
-                        .padding()
+                        .padding(.horizontal)
                         .frame(maxWidth: .infinity)
                         .background(Color.clear)
                 }
