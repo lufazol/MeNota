@@ -179,7 +179,22 @@ struct BlankNoteView: View {
                 }
             }
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { _ in
+                self.keyboardVisible = true
+            }
+
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                self.keyboardVisible = false
+            }
+        }
+        .onTapGesture {
+            if keyboardVisible {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
+        }
     }
+    @State private var keyboardVisible = false
 }
                             
 struct BlankNoteView_Previews: PreviewProvider {
