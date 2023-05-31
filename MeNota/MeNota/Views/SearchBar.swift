@@ -24,6 +24,7 @@ struct SearchBar: View {
             TextField("Search", text: $text, onEditingChanged: { editingChanged in
                 showFilteredResults = editingChanged
             })
+                .submitLabel(.search)
                 .foregroundColor(.white)
                 
             // Delete button becomes available when the user starts typing
