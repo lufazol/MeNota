@@ -9,6 +9,7 @@ import SwiftUI
 import PencilKit
 
 struct BlankNoteView: View {
+    @FocusState private var isFocused: Bool
     @State private var title: String = ""
     @State private var text: String = ""
     @State var isChecked: Bool = false
@@ -59,21 +60,25 @@ struct BlankNoteView: View {
                     TextField("Title", text: $title)
                     .font(.system(size: 26))
                     .padding(.horizontal)
+                    .focused($isFocused)
                     .padding(.bottom, 0)
                     .fontWeight(.bold)
                     TextEditor(text: $text)
                         .padding(.horizontal)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .focused($isFocused)
                         .background(Color.clear)
                 }
                 
                 Spacer()
                 
             }.toolbar{
+                // bottom toolbar showed during whole view
                 ToolbarItemGroup(placement: .bottomBar) {
                     BlankNoteBottomToolBar(isChecklistPressed: SharedVar, isCanvasPressed: SharedVar, isNewNotePressed: SharedVar, text: $text)
                 }
                 
+                // top toolbar if canvas is showing
                 if SharedVar.isCanvasPressed {
                     ToolbarItemGroup(placement: .principal) {
                         HStack {
@@ -105,7 +110,7 @@ struct BlankNoteView: View {
                                 Image(systemName: "ellipsis.circle")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                    .frame(width: 20, height: 20)
+                                    .frame(width: 22, height: 22)
                             }
 
                             Button(action: {
@@ -117,7 +122,57 @@ struct BlankNoteView: View {
                         }
                         .padding(.leading)
                     }
-                } else {
+                }
+                
+                // top toolbar if textfield is active
+                else if isFocused {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        HStack {
+                            Button(action: {
+                                // Perform action for the share button
+                                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                                      let window = windowScene.windows.first else {
+                                    return
+                                }
+                                
+                                let shareSheet = UIActivityViewController(activityItems: ["Sharing content"], applicationActivities: nil)
+                                window.rootViewController?.present(shareSheet, animated: true, completion: nil)
+                            }) {
+                                Image(systemName: "square.and.arrow.up")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 22, height: 22)
+                            }
+
+                            Menu {
+                                HStack {
+                                    Button {
+                                        print("Test")
+                                    } label: {
+                                            Image(systemName: "squareshape.split.3x3")
+                                            Text("Lines & Grids")
+                                    }
+                                }
+                            } label: {
+                                Image(systemName: "ellipsis.circle")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 22, height: 22)
+
+                            }
+                            .padding()
+                            
+                            Button {
+                                // add note
+                            } label: {
+                                    Text("Done")
+                            }
+                        }
+                    }
+                }
+
+                // top toolbar if neither canvas nor textfield is active
+                else {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         BlankNoteTopToolBar()
                     }

@@ -103,7 +103,7 @@ struct NotesTopToolBar: View {
                 Image(systemName: "ellipsis.circle")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 20, height: 20)
+                    .frame(width: 22, height: 22)
 
             }
             .padding()

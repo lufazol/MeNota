@@ -25,7 +25,7 @@ struct BlankNoteTopToolBar: View {
                 Image(systemName: "square.and.arrow.up")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 20, height: 20)
+                    .frame(width: 22, height: 22)
             }
 
             Menu {
@@ -65,7 +65,7 @@ struct BlankNoteTopToolBar: View {
                 Image(systemName: "ellipsis.circle")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 20, height: 20)
+                    .frame(width: 22, height: 22)
 
             }
             .padding()
