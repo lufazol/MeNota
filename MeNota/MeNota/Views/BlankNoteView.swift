@@ -182,6 +182,7 @@ struct BlankNoteView: View {
                                          date: Date.now,
                                          folderID: 0
                                      ))
+                                isFocused = false
                                 } else {
                                     
                                     if let index = noteList.noteList.firstIndex(where: { $0.id == chosenNoteId }) {
@@ -191,6 +192,8 @@ struct BlankNoteView: View {
                                         updatedNote.date = Date.now
                                         noteList.noteList[index] = updatedNote
                                     }
+                                    
+                                    isFocused = false
                                 }
                                 
                             } label: {
