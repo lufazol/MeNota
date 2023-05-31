@@ -39,8 +39,19 @@ struct BlankNoteView: View {
                 }
                 
                 else if SharedVar.isCanvasPressed{
-                        VStack {
+                        VStack{
+                            Text(title)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .font(.system(size: 26))
+                                .padding(.horizontal)
+                                .padding(.bottom, 0)
+                                .fontWeight(.bold)
+                            Text(text)
+                                .padding(.horizontal)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background(Color.clear)
                             MyCanvas(canvasView: canvasView)
+                            
                         }
                     }
                 
@@ -52,7 +63,7 @@ struct BlankNoteView: View {
                     .fontWeight(.bold)
                     TextEditor(text: $text)
                         .padding(.horizontal)
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .background(Color.clear)
                 }
                 
