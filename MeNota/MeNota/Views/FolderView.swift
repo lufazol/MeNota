@@ -11,32 +11,53 @@ import SwiftUI
 
 
 struct FolderView: View {
+    @State private var isEditing: Bool = false
     @State private var showingNewFolderView = false
+    @State private var IsPressedEditButton = false
     @StateObject var folderList = FolderList()
 
     var body: some View {
         NavigationView {
             List {
                 Section(header: SectionHeaderView(text: "iCloud", capitalization: .none)) {
-                    ForEach(folderList.data) { folder in
-                        NavigationLink(destination: NotesView(noteList: folder.notes, title: folder.title)) {
-                            HStack {
-                                Image(systemName: folder.icon)
-                                    .foregroundColor(.yellow)
-                                Text(folder.title)
-                                Spacer()
-                                Text("\(folder.quantity)")
-                                    .foregroundColor(.gray)
+                    if !isEditing {
+                        ForEach(folderList.data) { folder in
+                            NavigationLink(destination: NotesView(noteList: folder.notes, title: folder.title)) {
+                                HStack {
+                                    Image(systemName: folder.icon)
+                                        .foregroundColor(.yellow)
+                                    Text(folder.title)
+                                    Spacer()
+                                    Text("\(folder.quantity)")
+                                        .foregroundColor(.gray)
+                                }
                             }
                         }
                     }
+                    else {
+                        ForEach(folderList.data) { folder in
+                            NavigationLink(destination: NotesView(noteList: folder.notes, title: folder.title)) {
+                                HStack {
+                                    Image(systemName: folder.icon)
+                                        .foregroundColor(.yellow)
+                                    Text(folder.title)
+                                    Spacer()
+                                    Text("\(folder.quantity)")
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                        }
+                        .onMove(perform: self.move)
+                        .onDelete(perform: delete)
+                    }
+
                 }
             }
             .listStyle(InsetGroupedListStyle())
             
             .navigationBarTitle("Folders")
-            .navigationBarItems(trailing: NavigationLink(destination: BlankNoteView()) {
-                Text("Edit")
+            .navigationBarItems(trailing: Button("Edit"){
+                isEditing.toggle()
             })
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
@@ -52,5 +73,12 @@ struct FolderView: View {
             NewFolderView(folderList: folderList)
         }
         
+    }
+    func move(from source: IndexSet, to destination: Int){
+        folderList.data.move(fromOffsets: source, toOffset: destination)
+    }
+    
+    func delete(at offsets: IndexSet) {
+        folderList.data.remove(atOffsets: offsets)
     }
 }
