@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct NotesBottomToolBar: View {
+    @ObservedObject var noteList: NoteList
     var notesNumber: String
+    
+    init(noteList: NoteList, notesNumber: String) {
+        self.noteList = noteList
+        self.notesNumber = notesNumber
+    }
+    
     var body: some View {
         Spacer()
 
@@ -17,7 +24,7 @@ struct NotesBottomToolBar: View {
     
         Spacer()
                             
-        NavigationLink(destination: BlankNoteView()) {
+        NavigationLink(destination: BlankNoteView(note: noteList, chosenNoteId: -1)) {
             Image(systemName: "square.and.pencil")
         }
     }

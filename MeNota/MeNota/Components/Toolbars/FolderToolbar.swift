@@ -9,7 +9,14 @@ import Foundation
 import SwiftUI
 
 struct FolderToolbar: View {
-    let action: () -> Void
+    @ObservedObject var noteList: NoteList
+    var action: () -> Void
+    
+    init(noteList: NoteList, action: @escaping () -> Void) {
+        self.noteList = noteList
+        self.action = action
+    }
+    
     
     var body: some View {
         HStack {
@@ -19,7 +26,7 @@ struct FolderToolbar: View {
             
             Spacer()
 
-            NavigationLink(destination: BlankNoteView()) {
+            NavigationLink(destination: BlankNoteView(note: noteList, chosenNoteId: -1)) {
                 Image(systemName: "square.and.pencil")
             }
         }

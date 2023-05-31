@@ -9,18 +9,30 @@ import SwiftUI
 import PencilKit
 
 struct BlankNoteView: View {
+    @ObservedObject var noteList: NoteList
     @State private var title: String = ""
     @State private var text: String = ""
     @State var isChecked: Bool = false
     @StateObject var SharedVar = sharedVar()
     private var canvasView = PKCanvasView()
+    private var chosenNoteId: Int
     
-    init(note: Note = Note(id: 0, title: "", description: "", tag: "", time: "", date: Date.now)) {
-           _title = State(initialValue: note.title)
-           _text = State(initialValue: note.description)
+    init(note: NoteList, chosenNoteId: Int) {
+        self.noteList = note
+        self.chosenNoteId = chosenNoteId
+        
+        var chosenNote: Note? {
+            return noteList.noteList.first { $0.id == chosenNoteId}
+        }
+        
+        
+        if(chosenNote != nil) {
+            _title = State(initialValue: chosenNote!.title)
+            _text = State(initialValue: chosenNote!.description)
+        }
 
-           UITextField.appearance().clearButtonMode = .never
-       }
+        UITextField.appearance().clearButtonMode = .never
+    }
     
     
     func toggle(){isChecked = !isChecked}
@@ -42,7 +54,7 @@ struct BlankNoteView: View {
                         VStack {
                             MyCanvas(canvasView: canvasView)
                         }
-                        .toolbar{
+                        .toolbar {
                             ToolbarItemGroup(placement: .principal) {
                                 HStack {
                                     Button(action: {
@@ -55,7 +67,17 @@ struct BlankNoteView: View {
                                     }
 
                                     Button(action: {
-                                        // Perform action for the first toolbar button
+                                        
+                                         noteList.noteList.append(
+                                             Note(
+                                                 id: noteList.noteList.count+1,
+                                                 title: title,
+                                                 description: text,
+                                                 tag: "Reminder",
+                                                 time: "II",
+                                                 date: Date.now
+                                         ))
+                                         
                                     }) {
                                         Image(systemName: "arrow.uturn.right.circle")
                                             .resizable()
@@ -112,11 +134,5 @@ struct BlankNoteView: View {
                 }
             }
         .navigationBarTitleDisplayMode(.inline)
-    }
-}
-                            
-struct BlankNoteView_Previews: PreviewProvider {
-    static var previews: some View {
-        BlankNoteView()
     }
 }

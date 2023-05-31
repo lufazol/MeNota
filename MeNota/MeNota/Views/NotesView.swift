@@ -37,17 +37,18 @@ struct NotesView: View {
         }
         .padding()
         .navigationBarTitle(title)
-        .toolbar {
+          .toolbar {
             ToolbarItemGroup(placement: .navigationBarTrailing) {
                 NotesTopToolBar()
             }
             if(noteList.noteList.isEmpty) {
                 ToolbarItemGroup(placement: .bottomBar) {
-                    NotesBottomToolBar(notesNumber: "Nenhuma nota")
+                    NotesBottomToolBar(noteList: noteList, notesNumber: "Nenhuma nota")
                 }
-            } else {
+            }
+              else {
                 ToolbarItemGroup(placement: .bottomBar) {
-                    NotesBottomToolBar(notesNumber: "\($noteList.noteList.count) notes")
+                    NotesBottomToolBar(noteList: noteList, notesNumber: "\($noteList.noteList.count) notes")
                 }
             }
         }
@@ -57,7 +58,7 @@ struct NotesView: View {
     func createSection(header: String, notes: [Note]) -> some View {
         Section(header: SectionHeaderView(text: header, capitalization: .none)) {
             ForEach(notes) { note in
-                NavigationLink(destination: BlankNoteView(note: note)) {
+                NavigationLink(destination: BlankNoteView(note: noteList, chosenNoteId: note.id)) {
                     VStack(alignment: .leading) {
                         Text(note.title)
                             .font(.headline)
@@ -115,6 +116,6 @@ func getNotesCreatedWithinLast15Days(notes: [Note]) -> [Note] {
     
     return notes.filter { note in
         let noteDate = Calendar.current.startOfDay(for: note.date)
-        return noteDate >= fifteenDaysAgo && noteDate <= today
+        return noteDate >= fifteenDaysAgo && noteDate < today
     }
 }

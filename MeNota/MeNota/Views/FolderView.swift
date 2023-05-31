@@ -35,12 +35,15 @@ struct FolderView: View {
             .listStyle(InsetGroupedListStyle())
             
             .navigationBarTitle("Folders")
-            .navigationBarItems(trailing: NavigationLink(destination: BlankNoteView()) {
+            .navigationBarItems(trailing: NavigationLink(destination: SearchView()) {
                 Text("Edit")
             })
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
-                    FolderToolbar(action: { showingNewFolderView.toggle() })
+                    FolderToolbar(
+                        noteList: folderList.data[0].notes,
+                        action: { showingNewFolderView.toggle() }
+                    )
                 }
             }
             

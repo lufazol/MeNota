@@ -52,9 +52,26 @@ class FolderList: ObservableObject {
             title: "Market List",
             description: "1. Pasta\n2. Tomato\n3. Lettuce\n4. Rice\n5. Beans",
             tag: "Reminder",
-            time: "09:45",
+            time: "Yesterday",
             date:  getDateBeforeFifteenDays()
-            ),])
+            ),
+            Note(
+                id: 3,
+                title: "New Year Party",
+                description: "Hey guys! I want to ask you to go tomy New Yers party in 2023. I wil happen in São Paulo at 21pm. Please, let me know if you will go.",
+                tag: "Reminder",
+                time: "21/03/2023",
+                date:  getDateBeforeFifteenDays()
+                ),
+                Note(
+                id: 4,
+                title: "Professor Email",
+                description: "Hello teacher how are you?",
+                tag: "Reminder",
+                time: "01/02/2023",
+                date:  getDateBeforeFifteenDays()
+                ),
+             ])
       ),
         Folder(
         id: 2,
