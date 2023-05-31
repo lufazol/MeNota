@@ -9,11 +9,11 @@ import Foundation
 
 struct Note : Identifiable {
     let id : Int
-    let title : String
-    let description : String
+    var title : String
+    var description : String
     let tag : String
     let time: String
-    let date: Date
+    var date: Date
     let folderID: Int // Added folderID property
 }
 

@@ -26,7 +26,6 @@ struct BlankNoteView: View {
             return noteList.noteList.first { $0.id == chosenNoteId}
         }
         
-        
         if(chosenNote != nil) {
             _title = State(initialValue: chosenNote!.title)
             _text = State(initialValue: chosenNote!.description)
@@ -124,9 +123,7 @@ struct BlankNoteView: View {
                                     .frame(width: 22, height: 22)
                             }
 
-                            Button(action: {
-                                // Perform action for the second toolbar button
-                            })
+                            Button(action: {})
                             {
                                 Text("Done")
                             }
@@ -174,7 +171,28 @@ struct BlankNoteView: View {
                             .padding()
                             
                             Button {
-                                // add note
+                                if(chosenNoteId == -1) {
+                                    noteList.noteList.append(
+                                       Note(
+                                         id: noteList.noteList.count+1,
+                                         title: title,
+                                         description: text,
+                                         tag: "Reminder",
+                                         time: "II",
+                                         date: Date.now,
+                                         folderID: 0
+                                     ))
+                                } else {
+                                    
+                                    if let index = noteList.noteList.firstIndex(where: { $0.id == chosenNoteId }) {
+                                        var updatedNote = noteList.noteList[index]
+                                        updatedNote.description = text
+                                        updatedNote.title = title
+                                        updatedNote.date = Date.now
+                                        noteList.noteList[index] = updatedNote
+                                    }
+                                }
+                                
                             } label: {
                                     Text("Done")
                             }
