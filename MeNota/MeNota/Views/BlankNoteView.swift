@@ -42,50 +42,6 @@ struct BlankNoteView: View {
                         VStack {
                             MyCanvas(canvasView: canvasView)
                         }
-                        .toolbar{
-                            ToolbarItemGroup(placement: .principal) {
-                                HStack {
-                                    Button(action: {
-                                        // Perform action for the first toolbar button
-                                    }) {
-                                        Image(systemName: "arrow.uturn.left.circle")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 20, height: 20)
-                                    }
-
-                                    Button(action: {
-                                        // Perform action for the first toolbar button
-                                    }) {
-                                        Image(systemName: "arrow.uturn.right.circle")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 20, height: 20)
-                                    }
-                                }
-                                .padding()
-                            }
-                            ToolbarItemGroup(placement: .navigationBarTrailing) {
-                                HStack {
-                                    Button(action: {
-                                        // Perform action for the first toolbar button
-                                    }) {
-                                        Image(systemName: "ellipsis.circle")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                            .frame(width: 20, height: 20)
-                                    }
-
-                                    Button(action: {
-                                        // Perform action for the second toolbar button
-                                    })
-                                    {
-                                        Text("Done")
-                                    }
-                                }
-                                .padding(.leading)
-                            }
-                        }
                     }
                 
                 else{
@@ -107,8 +63,53 @@ struct BlankNoteView: View {
                     BlankNoteBottomToolBar(isChecklistPressed: SharedVar, isCanvasPressed: SharedVar, isNewNotePressed: SharedVar, text: $text)
                 }
                 
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    BlankNoteTopToolBar()
+                if SharedVar.isCanvasPressed {
+                    ToolbarItemGroup(placement: .principal) {
+                        HStack {
+                            Button(action: {
+                                // Perform action for the first toolbar button
+                            }) {
+                                Image(systemName: "arrow.uturn.left.circle")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 20, height: 20)
+                            }
+
+                            Button(action: {
+                                // Perform action for the first toolbar button
+                            }) {
+                                Image(systemName: "arrow.uturn.right.circle")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 20, height: 20)
+                            }
+                        }
+                        .padding()
+                    }
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        HStack {
+                            Button(action: {
+                                // Perform action for the first toolbar button
+                            }) {
+                                Image(systemName: "ellipsis.circle")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 20, height: 20)
+                            }
+
+                            Button(action: {
+                                // Perform action for the second toolbar button
+                            })
+                            {
+                                Text("Done")
+                            }
+                        }
+                        .padding(.leading)
+                    }
+                } else {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        BlankNoteTopToolBar()
+                    }
                 }
             }
         .navigationBarTitleDisplayMode(.inline)
