@@ -13,7 +13,7 @@ import SwiftUI
 
 struct SearchBar: View {
     @Binding var text: String
-    //@State var textFieldText = ""
+    @Binding var showFilteredResults: Bool
     @State var dataArray: [String] = []
 
     var body: some View {
@@ -21,7 +21,9 @@ struct SearchBar: View {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.gray)
             
-            TextField("Search", text: $text)
+            TextField("Search", text: $text, onEditingChanged: { editingChanged in
+                showFilteredResults = editingChanged
+            })
                 .foregroundColor(.white)
                 
             // Delete button becomes available when the user starts typing
@@ -44,9 +46,3 @@ struct SearchBar: View {
         }
     }
 }
-
-//struct SearchBar_Previews: PreviewProvider {
-//  static var previews: some View {
-//    SearchBar()
-//  }
-//}

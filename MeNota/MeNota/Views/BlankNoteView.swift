@@ -15,7 +15,7 @@ struct BlankNoteView: View {
     @StateObject var SharedVar = sharedVar()
     private var canvasView = PKCanvasView()
     
-    init(note: Note = Note(id: 0, title: "", description: "", tag: "", time: "", date: Date.now)) {
+    init(note: Note = Note(id: 0, title: "", description: "", tag: "", time: "", date: Date.now, folderID: 0)) {
            _title = State(initialValue: note.title)
            _text = State(initialValue: note.description)
 

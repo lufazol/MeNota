@@ -14,6 +14,7 @@ struct Note : Identifiable {
     let tag : String
     let time: String
     let date: Date
+    let folderID: Int // Added folderID property
 }
 
 struct Folder : Identifiable {
@@ -44,7 +45,8 @@ class FolderList: ObservableObject {
             description: "1. Call the bank to talk about my account\n2. Ask Milena to tell me her story\n3. Go to the grocery",
             tag: "Reminder",
             time: "10:30",
-            date: Date.now
+            date: Date(),
+            folderID: 1 // Set folderID to match the folder's ID
             ),
             
             Note(
@@ -53,7 +55,8 @@ class FolderList: ObservableObject {
             description: "1. Pasta\n2. Tomato\n3. Lettuce\n4. Rice\n5. Beans",
             tag: "Reminder",
             time: "09:45",
-            date:  getDateBeforeFifteenDays()
+            date: Date(),
+            folderID: 1 // Set folderID to match the folder's ID
             ),])
       ),
         Folder(
@@ -67,7 +70,8 @@ class FolderList: ObservableObject {
             description: "1. Prepare presentation for the meeting\n2. Review project proposal\n3. Follow up with clients",
             tag: "Work",
             time: "Monday",
-            date: getDateBeforeFifteenDays()
+            date: Date(),
+            folderID: 2 // Set folderID to match the folder's ID
            ),
                                       
            Note(
@@ -76,9 +80,14 @@ class FolderList: ObservableObject {
             description: "1. Book flights\n2. Reserve hotel\n3. Create itinerary",
             tag: "Travel",
             time: "Sunday",
-            date: getDateBeforeFifteenDays()
+            date: Date(),
+            folderID: 2 // Set folderID to match the folder's ID
            )
       ]))]
+      
+    func getFolderByID(_ folderID: Int) -> Folder? {
+        return data.first { $0.id == folderID }
+    }
 }
 
 func getDateBeforeFifteenDays() -> Date {
