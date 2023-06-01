@@ -10,10 +10,11 @@ import PencilKit
 
 struct BlankNoteView: View {
     @ObservedObject var noteList: NoteList
-    @FocusState private var isFocused: Bool
+    //@FocusState private var isFocused: Bool
     @State private var title: String = ""
     @State private var text: String = ""
     @State var isChecked: Bool = false
+    @State var isActive: Bool = false
     @StateObject var SharedVar = sharedVar()
     private var canvasView = PKCanvasView()
     private var chosenNoteId: Int
@@ -67,16 +68,21 @@ struct BlankNoteView: View {
                     }
                 
                 else{
-                    TextField("Title", text: $title)
+                    TextField("Title", text: $title, onEditingChanged: { changed in
+                        if changed {
+                            isActive = true
+                        }
+                    })
                     .font(.system(size: 26))
                     .padding(.horizontal)
-                    .focused($isFocused)
                     .padding(.bottom, 0)
                     .fontWeight(.bold)
                     TextEditor(text: $text)
+                        .onChange(of: text, perform: { text in
+                            isActive = true
+                        })
                         .padding(.horizontal)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .focused($isFocused)
                         .background(Color.clear)
                 }
                 
@@ -133,7 +139,7 @@ struct BlankNoteView: View {
                 }
                 
                 // top toolbar if textfield is active
-                else if isFocused {
+                else if isActive {
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         HStack {
                             Button(action: {
@@ -182,7 +188,8 @@ struct BlankNoteView: View {
                                          date: Date.now,
                                          folderID: 0
                                      ))
-                                isFocused = false
+                                isActive = false
+                                //isFocused = false
                                 } else {
                                     
                                     if let index = noteList.noteList.firstIndex(where: { $0.id == chosenNoteId }) {
@@ -192,8 +199,8 @@ struct BlankNoteView: View {
                                         updatedNote.date = Date.now
                                         noteList.noteList[index] = updatedNote
                                     }
-                                    
-                                    isFocused = false
+                                    isActive = false
+                                    //isFocused = false
                                 }
                                 
                             } label: {

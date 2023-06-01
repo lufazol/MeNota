@@ -15,13 +15,13 @@ class sharedVar: ObservableObject{
     
     
     func toggleChecklist(){
-        isChecklistPressed = true
+        isChecklistPressed.toggle()
     }
     func toggleCanvas(){
-        isCanvasPressed = true
+        isCanvasPressed.toggle()
     }
     func toggleNewNote(){
-        isNewNotePressed = true
+        isNewNotePressed.toggle()
     }
 }
 
